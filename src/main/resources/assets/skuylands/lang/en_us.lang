@@ -1,0 +1,32 @@
+itemGroup.skuylandstab=SkuyLands Mod
+
+//Items
+item.leaop_ingot.name=Leaop Ingot
+
+//Armor
+item.leaop_helmet.name=Leaop Helmet
+item.leaop_chestplate.name=Leaop Chestplate
+item.leaop_leggings.name=Leaop Leggings
+item.leaop_boots.name=Leaop Boots
+
+//Tools
+item.leaop_sword.name=Leaop Sword
+item.leaop_pickaxe.name=Leaop Pickaxe
+item.leaop_axe.name=Leaop Axe
+item.leaop_shovel.name=Leaop Shovel
+item.leaop_hoe.name=Leaop HOe
+
+//Ranged Weapons
+item.leaop_bow.name=Leaop Bow
+item.leaop_arrow.name=Leaop Arrow
+
+//Entities
+entity.leaop_arrow.name=Leaop Arrow
+
+//Blocks
+tile.leaop_block.name=Block Of Leaop
+tile.leaop_ore.name=Leaop Ore
+tile.lea_log.name=Lea Log
+tile.lea_grass_block.name=Lea Grass Block
+tile.lea_leaves.name=Lea Leaves
+tile.lea_planks.name=Lea Planks

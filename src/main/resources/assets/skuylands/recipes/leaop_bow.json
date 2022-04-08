@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		".#S",
+		"#.S",
+		".#S"
+	],
+	
+	"key": {
+		"#": {
+			"item": "skuylands:leaop_ingot"
+		},
+		"S": {
+			"item": "minecraft:string"
+		},
+		".": {
+			"item": "minecraft:air"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:leaop_bow"
+	}
+}

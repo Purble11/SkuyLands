@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"#",
+		"#",
+		"S"
+	],
+	
+	"key": {
+		"#": {
+			"item": "skuylands:lea_planks"
+		},
+		"S": {
+			"item": "minecraft:stick"
+		}
+	},
+	
+	"result": {
+		"item": "minecraft:wooden_sword"
+	}
+}

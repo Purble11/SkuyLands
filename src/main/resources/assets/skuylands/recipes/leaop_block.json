@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"###",
+		"###",
+		"###"
+	],
+	
+	"key": {
+		"#": {
+			"item": "skuylands:leaop_ingot"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:leaop_block"
+	}
+}

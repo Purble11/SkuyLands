@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"#",
+		"#"
+	],
+	
+	"key": {
+		"#": {
+			"item": "skuylands:lea_planks"
+		}
+	},
+	
+	"result": {
+		"item": "minecraft:stick",
+		"count": 4
+	}
+}

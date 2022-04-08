@@ -1,0 +1,16 @@
+[
+{
+  "modid": "skuyLands",
+  "name": "Skuy Lands",
+  "description": "A mod made by Purble",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Purble"],
+  "credits": "Me, I guess",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
