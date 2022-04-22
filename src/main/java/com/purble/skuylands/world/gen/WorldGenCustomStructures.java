@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.purble.skuylands.world.gen.biomes.BiomeSkuyLands;
 import com.purble.skuylands.world.gen.biomes.WorldGenStructure;
+import com.purble.skuylands.world.gen.biomes.WorldGenStructure2;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -20,12 +21,16 @@ import scala.actors.threadpool.Arrays;
 public class WorldGenCustomStructures implements IWorldGenerator {
 
 	public static final WorldGenStructure TREE = new WorldGenStructure("skuylandstree");
+	public static final WorldGenStructure2 LEAOP_LORD_MINION_STRUCTURE = new WorldGenStructure2("LEAOP_LORD_MINION_STRUCTURE".toLowerCase());
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
 		switch(world.provider.getDimension()) {
 			case 0:
+				generateStructure(LEAOP_LORD_MINION_STRUCTURE, world, random, chunkX, chunkZ, 65, Blocks.GRASS, BiomeSkuyLands.class);
+				generateStructure(TREE, world, random, chunkX, chunkZ, 1, Blocks.DIRT, BiomeSkuyLands.class);
+				generateStructure(TREE, world, random, chunkX, chunkZ, 1, Blocks.GRASS, BiomeSkuyLands.class);
 				generateStructure(TREE, world, random, chunkX, chunkZ, 1, Blocks.DIRT, BiomeSkuyLands.class);
 				generateStructure(TREE, world, random, chunkX, chunkZ, 1, Blocks.GRASS, BiomeSkuyLands.class);
 		}

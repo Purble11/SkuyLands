@@ -1,0 +1,31 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"LP.",
+		"PLI",
+		".IB"
+	],
+	
+	"key": {
+		"B": {
+			"item": "skuylands:leaop_block"
+		},
+		"P": {
+			"item": "skuylands:lea_planks"
+		},
+		"L": {
+			"item": "skuylands:lea_log"
+		},
+		"I": {
+			"item": "skuylands:leaop_ingot"
+		},
+		".": {
+			"item": "minecraft:air"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:unknown_leaop_key"
+	}
+}

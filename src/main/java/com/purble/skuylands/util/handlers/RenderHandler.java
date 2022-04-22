@@ -2,6 +2,8 @@ package com.purble.skuylands.util.handlers;
 
 import com.purble.skuylands.entity.EntityLeaopArrow;
 import com.purble.skuylands.entity.RenderLeaopArrow;
+import com.purble.skuylands.entity.leaoplordminion.EntityLeaopLordMinion;
+import com.purble.skuylands.entity.leaoplordminion.RenderLeaopLordMinion;
 
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -17,6 +19,12 @@ public class RenderHandler {
 			@Override
 			public Render<? super EntityLeaopArrow> createRenderFor(RenderManager manager) {
 				return new RenderLeaopArrow(manager);
+			}
+		});
+		RenderingRegistry.registerEntityRenderingHandler(EntityLeaopLordMinion.class, new IRenderFactory<EntityLeaopLordMinion>() {
+			@Override
+			public Render<? super EntityLeaopLordMinion> createRenderFor(RenderManager manager) {
+				return new RenderLeaopLordMinion(manager);
 			}
 		});
 	}

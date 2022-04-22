@@ -13,6 +13,10 @@ public class ConfigHandler {
 	
 	//Entities
 	public static int ENTITY_LEAOP_ARROW = 6912320;
+	public static int ENTITY_LEAOP_LORD_MINION = 69456291;
+	public static int ENTITY_LEAOP_LORD_MINION_PROJECTILE = 69789947;
+	
+	//Commands
 	public static boolean TOGGLE_KILLME = true;
 	
 	public static void init(File file) {
@@ -24,6 +28,8 @@ public class ConfigHandler {
 		config.addCustomCategoryComment(category, "Note: Changing these ids might break somethings or corrupt a world with this mod");
 
 		ENTITY_LEAOP_ARROW = config.getInt("LeaopArrow", category, 6912320, 0, 500, "ID for any Leaop Arrows shot");
+		ENTITY_LEAOP_LORD_MINION = config.getInt("LeaopLordMinion", category, 69456291, 0, 500, "ID for any Leaop Lord Minion");
+		ENTITY_LEAOP_LORD_MINION_PROJECTILE = config.getInt("LeaopLordMinionProjectile", category, 69789947, 0, 500, "ID for any Leaop Lord Minion Attack Projectile");
 		
 		category = "commands";
 		config.addCustomCategoryComment(category, "Enable or disable SkuyLands's Commands");

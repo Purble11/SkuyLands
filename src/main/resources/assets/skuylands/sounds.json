@@ -1,0 +1,12 @@
+{
+	"entity.leaop_lord_minion.leaop_lord_minion_ambient": {
+		"category": "entity",
+		"subtitle": "entity.leaop_lord_minion.leaop_lord_minion_ambient",
+		"sounds": [{ "name": "skuylands:entity/leaop_lord_minion/leaop_lord_minion_ambient", "stream": true }]
+	},
+	"entity.leaop_lord_minion.leaop_lord_minion_death": {
+		"category": "entity",
+		"subtitle": "entity.leaop_lord_minion.leaop_lord_minion_death",
+		"sounds": [{ "name": "skuylands:entity/leaop_lord_minion/leaop_lord_minion_death", "stream": true }]
+	}
+}

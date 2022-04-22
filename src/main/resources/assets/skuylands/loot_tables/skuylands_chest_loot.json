@@ -1,0 +1,134 @@
+{
+	"pools": [
+		{
+			"name": "skl_the_loot",
+			"rolls": {
+				"min": 1,
+				"max": 12
+			},
+			"entries": [
+				{
+					"type": "item",
+					"weight": 40,
+					"name": "skuylands:leaop_ingot"
+				},
+				{
+					"type": "item",
+					"weight": 47,
+					"name": "skuylands:leaop_block"
+				},
+				{
+					"type": "item",
+					"weight": 33,
+					"name": "skuylands:leaop_axe"
+				},
+				{
+					"type": "item",
+					"weight": 33,
+					"name": "skuylands:leaop_pickaxe"
+				}
+			]
+		},
+		{
+			"name": "enchantment_loot",
+			"rolls": {
+				"min": 0,
+				"max": 1
+			},
+			"entries": [
+				{
+					"type": "item",
+					"weight": 1,
+					"name": "minecraft:web"
+				},
+				{
+					"type": "item",
+					"weight": 3,
+					"name": "skuylands:leaop_helmet",
+					"functions": [
+						{
+							"function": "enchant_randomly",
+							"enchantments": [
+								"skuylands:lea_undamage",
+								"protection",
+								"unbreaking",
+								"thorns",
+								"fire_protection"
+							]
+						}
+					]
+				},
+				{
+					"type": "item",
+					"weight": 8,
+					"name": "skuylands:leaop_chestplate",
+					"functions": [
+						{
+							"function": "enchant_randomly",
+							"enchantments": [
+								"skuylands:lea_undamage",
+								"protection",
+								"unbreaking",
+								"thorns",
+								"fire_protection"
+							]
+						}
+					]
+				},
+				{
+					"type": "item",
+					"weight": 5,
+					"name": "skuylands:leaop_leggings",
+					"functions": [
+						{
+							"function": "enchant_randomly",
+							"enchantments": [
+								"skuylands:lea_undamage",
+								"protection",
+								"unbreaking",
+								"thorns",
+								"fire_protection"
+							]
+						}
+					]
+				},
+				{
+					"type": "item",
+					"weight": 1,
+					"name": "skuylands:leaop_boots",
+					"functions": [
+						{
+							"function": "enchant_randomly",
+							"enchantments": [
+								"skuylands:lea_undamage",
+								"protection",
+								"unbreaking",
+								"thorns",
+								"fire_protection"
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "skl_the_dirt",
+			"rolls": {
+				"min": 1,
+				"max": 21
+			},
+			"entries": [
+				{
+					"type": "item",
+					"weight": 6,
+					"name": "minecraft:web"
+				},
+				{
+					"type": "item",
+					"weight": 3,
+					"name": "minecraft:air"
+				}
+			]
+		}
+	]
+}

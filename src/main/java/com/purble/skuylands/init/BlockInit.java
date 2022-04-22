@@ -19,4 +19,5 @@ public class BlockInit {
 	public static final Block LEA_PLANKS = new LEA_PLANKS("LEA_PLANKS".toLowerCase(), Material.WOOD);
 	public static final Block LEA_LEAVES = new LEA_LEAVES("LEA_LEAVES".toLowerCase(), Material.LEAVES);
 	public static final Block LEAOP_ORE = new LEAOP_ORE("LEAOP_ORE".toLowerCase(), Material.ROCK);
+	public static final Block LEAOP_LORD_MINION_SPAWNER = new LEAOP_LORD_MINION_SPAWNER("LEAOP_LORD_MINION_SPAWNER".toLowerCase(), Material.ROCK);
 }

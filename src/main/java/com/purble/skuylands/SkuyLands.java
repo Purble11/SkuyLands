@@ -76,6 +76,7 @@ public class SkuyLands {
 				player.world.provider.getSpawnPoint().getY(), 
 				(double) player.world.provider.getSpawnPoint().getZ() + 0.5F);*/
 		player.getServer().getPlayerList().sendMessage(new TextComponentString(player.getDisplayNameString() + deathMessage.get(new Random().nextInt(deathMessage.size())) + " " + playerKillerName));
+		player.setHealth(-69420.0F);
 	}
 	
 	public static void killEntity(EntityLivingBase entity) {

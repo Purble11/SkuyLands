@@ -1,12 +1,20 @@
 package com.purble.skuylands.init;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.purble.skuylands.items.*;
-import com.purble.skuylands.items.tools.*;
+import com.purble.skuylands.items.LEAOPED_APPLE;
+import com.purble.skuylands.items.LEAOP_ARMOR;
+import com.purble.skuylands.items.LEAOP_ARROW;
+import com.purble.skuylands.items.LEAOP_INGOT;
+import com.purble.skuylands.items.UNKNOWN_LEAOP_KEY;
+import com.purble.skuylands.items.tools.LEAOP_AXE;
+import com.purble.skuylands.items.tools.LEAOP_BOW;
+import com.purble.skuylands.items.tools.LEAOP_HOE;
+import com.purble.skuylands.items.tools.LEAOP_PICKAXE;
+import com.purble.skuylands.items.tools.LEAOP_SHOVEL;
+import com.purble.skuylands.items.tools.LEAOP_SWORD;
 import com.purble.skuylands.util.Referance;
-
-import java.util.ArrayList;
 
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
@@ -23,6 +31,9 @@ public class ItemInit {
 	public static final ToolMaterial TOOL_LEAOP = EnumHelper.addToolMaterial("TOOL_LEAOP".toLowerCase(), 30, 6000, 38.5F, 1, 100);
 	
 	public static final Item LEAOP_INGOT = new LEAOP_INGOT("LEAOP_INGOT".toLowerCase());
+	public static final Item UNKNOWN_LEAOP_KEY = new UNKNOWN_LEAOP_KEY("UNKNOWN_LEAOP_KEY".toLowerCase());
+	
+	public static final Item LEAOPED_APPLE = new LEAOPED_APPLE("LEAOPED_APPLE".toLowerCase(), 20, 15.5F, false);
 	
 	public static final Item LEAOP_HELMET = new LEAOP_ARMOR("LEAOP_HELMET".toLowerCase(), 1, ARMOR_LEOP, EntityEquipmentSlot.HEAD);
 	public static final Item LEAOP_CHESTPLATE = new LEAOP_ARMOR("LEAOP_CHESTPLATE".toLowerCase(), 1, ARMOR_LEOP, EntityEquipmentSlot.CHEST);

@@ -4,6 +4,7 @@ import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.commands.killme.CommandKillMe;
 import com.purble.skuylands.init.BiomeInit;
 import com.purble.skuylands.init.BlockInit;
+import com.purble.skuylands.init.EnchantmentInit;
 import com.purble.skuylands.init.EntityInit;
 import com.purble.skuylands.init.ItemInit;
 import com.purble.skuylands.recipes.SmeltingRecipes;
@@ -11,6 +12,7 @@ import com.purble.skuylands.world.gen.WorldGenCustomStructures;
 import com.purble.skuylands.world.gen.WorldGenOres;
 
 import net.minecraft.block.Block;
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.event.RegistryEvent;
@@ -46,17 +48,25 @@ public class RegistryHandler {
 		}
 	}
 	
+	@SubscribeEvent
+	public static void registerEnchantments(RegistryEvent.Register<Enchantment> event) {
+		event.getRegistry().registerAll(EnchantmentInit.ENCHANTMENTS.toArray(new Enchantment[0]));
+	}
+	
 	public static void preInit(FMLPreInitializationEvent event) {
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 0);
 		EventHandler.registerEvents();
+		SoundsHandler.registerSounds();
 		EntityInit.registerEntities();
 		ConfigHandler.registerConfig(event);
+		LootTableHandler.registerLootTables();
 	}
 	
 	public static void init() {
 		SmeltingRecipes.init();
 		GameRegistry.registerWorldGenerator(new WorldGenOres(), 4);
 		BiomeInit.registerBiomes();
+		SkuyLands.proxy.render();
 	}
 	
 	public static void postInit() {
