@@ -20,4 +20,5 @@ public class BlockInit {
 	public static final Block LEA_LEAVES = new LEA_LEAVES("LEA_LEAVES".toLowerCase(), Material.LEAVES);
 	public static final Block LEAOP_ORE = new LEAOP_ORE("LEAOP_ORE".toLowerCase(), Material.ROCK);
 	public static final Block LEAOP_LORD_MINION_SPAWNER = new LEAOP_LORD_MINION_SPAWNER("LEAOP_LORD_MINION_SPAWNER".toLowerCase(), Material.ROCK);
+	//public static final Block LEAED_TABLE = new com.purble.skuylands.blocks.leaed_table.LEAED_TABLE("LEAED_TABLE".toLowerCase(), Material.IRON);
 }

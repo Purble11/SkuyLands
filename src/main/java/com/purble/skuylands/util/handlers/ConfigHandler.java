@@ -15,6 +15,7 @@ public class ConfigHandler {
 	public static int ENTITY_LEAOP_ARROW = 6912320;
 	public static int ENTITY_LEAOP_LORD_MINION = 69456291;
 	public static int ENTITY_LEAOP_LORD_MINION_PROJECTILE = 69789947;
+	public static int GUI_LEAED_TABLE = 69101875;
 	
 	//Commands
 	public static boolean TOGGLE_KILLME = true;
@@ -27,9 +28,14 @@ public class ConfigHandler {
 		category = "entity-ids";
 		config.addCustomCategoryComment(category, "Note: Changing these ids might break somethings or corrupt a world with this mod");
 
-		ENTITY_LEAOP_ARROW = config.getInt("LeaopArrow", category, 6912320, 0, 500, "ID for any Leaop Arrows shot");
-		ENTITY_LEAOP_LORD_MINION = config.getInt("LeaopLordMinion", category, 69456291, 0, 500, "ID for any Leaop Lord Minion");
-		ENTITY_LEAOP_LORD_MINION_PROJECTILE = config.getInt("LeaopLordMinionProjectile", category, 69789947, 0, 500, "ID for any Leaop Lord Minion Attack Projectile");
+		ENTITY_LEAOP_ARROW = config.getInt("LeaopArrow", category, 6912320, 0, 9999999, "ID for any Leaop Arrows shot");
+		ENTITY_LEAOP_LORD_MINION = config.getInt("LeaopLordMinion", category, 69456291, 0, 9999999, "ID for any Leaop Lord Minion");
+		ENTITY_LEAOP_LORD_MINION_PROJECTILE = config.getInt("LeaopLordMinionProjectile", category, 69789947, 0, 9999999, "ID for any Leaop Lord Minion Attack Projectile");
+		
+		category = "gui-ids";
+		config.addCustomCategoryComment(category, "Change Skuylands's Gui Ids");
+		
+		GUI_LEAED_TABLE = config.getInt("LeaedTableGui", category, 69101875, 0, 9999999, "ID for any Leaed Table Gui");
 		
 		category = "commands";
 		config.addCustomCategoryComment(category, "Enable or disable SkuyLands's Commands");

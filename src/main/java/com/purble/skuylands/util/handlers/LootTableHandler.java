@@ -7,8 +7,10 @@ import net.minecraft.world.storage.loot.LootTableList;
 
 public class LootTableHandler {
 	
+	public static ResourceLocation SKUYLANDS_CHEST_LOOT;
+	
 	public static void registerLootTables() {
-		LootTableList.register(new ResourceLocation(Referance.MOD_ID, "SKUYLANDS_CHEST_LOOT".toLowerCase()));
+		SKUYLANDS_CHEST_LOOT = LootTableList.register(new ResourceLocation(Referance.MOD_ID, "SKUYLANDS_CHEST_LOOT".toLowerCase()));
 	}
 
 }

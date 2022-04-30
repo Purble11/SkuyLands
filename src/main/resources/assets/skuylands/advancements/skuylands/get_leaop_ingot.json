@@ -1,0 +1,30 @@
+{
+    "display": {
+        "title": {
+            "translate": "advancements.skuylands.get_leaop_ingot.title"
+        },
+        "description": {
+            "translate": "advancements.skuylands.get_leaop_ingot.description"
+        },
+        "icon": {
+            "item": "skuylands:leaop_ore"
+        },
+        "frame": "task"
+    },
+    "criteria": {
+        "leaop_ingot": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "skuylands:leaop_ingot"
+                    }
+                ]
+            }
+        }
+    },
+    "parent": "skuylands:skuylands/root",
+    "rewards": {
+        "experience": 23
+    }
+}

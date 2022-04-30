@@ -59,24 +59,34 @@ public class SkuyLands {
 	
 	public static void killPlayer(EntityPlayer player, String playerKillerName) {
 		//make so if player has op armor on it kills the other hitter
-		InventoryPlayer inv = player.inventory;
-		
-		ArrayList<String> deathMessage = new ArrayList<>();
-		deathMessage.add(" was sent to heaven by");
-		deathMessage.add(" was slained by");
-		deathMessage.add(" was OOF-ed by");
-		deathMessage.add("'s damage was too little for");
-		deathMessage.add(" got squished like an bug by");
-		deathMessage.add(" was sent to the sky by");
-		
-		inv.dropAllItems();
-		inv.clear();
-		((EntityPlayerMP)player).connection.setPlayerLocation((double) player.getBedLocation().getX() + 0.5F, player.getBedLocation().getY(), (double) player.getBedLocation().getZ() + 0.5F, 1.0F, 1.0F);
-/*		player.setPosition((double) player.world.provider.getSpawnPoint().getX() + 0.5F,
-				player.world.provider.getSpawnPoint().getY(), 
-				(double) player.world.provider.getSpawnPoint().getZ() + 0.5F);*/
-		player.getServer().getPlayerList().sendMessage(new TextComponentString(player.getDisplayNameString() + deathMessage.get(new Random().nextInt(deathMessage.size())) + " " + playerKillerName));
-		player.setHealth(-69420.0F);
+		if(!player.getEntityWorld().isRemote) {
+			InventoryPlayer inv = player.inventory;
+			
+			ArrayList<String> deathMessage = new ArrayList<>();
+			deathMessage.add(" was sent to heaven by");
+			deathMessage.add(" was slained by");
+			deathMessage.add(" was OOF-ed by");
+			deathMessage.add("'s damage was too little for");
+			deathMessage.add(" got squished like an bug by");
+			deathMessage.add(" was sent to the sky by");
+			
+			inv.dropAllItems();
+			inv.clear();
+			try {
+				((EntityPlayerMP)player).connection.setPlayerLocation((double) player.getBedLocation().getX() + 0.5F, player.getBedLocation().getY(), (double) player.getBedLocation().getZ() + 0.5F, 1.0F, 1.0F);
+			} catch (NullPointerException e) {
+				((EntityPlayerMP)player).connection.setPlayerLocation((double) player.world.getSpawnPoint().getX() + 0.5F, player.world.getSpawnPoint().getY(), (double) player.world.getSpawnPoint().getZ() + 0.5F, 1.0F, 1.0F);
+			}
+		/*	player.setPosition((double) player.world.provider.getSpawnPoint().getX() + 0.5F,
+					player.world.provider.getSpawnPoint().getY(), 
+					(double) player.world.provider.getSpawnPoint().getZ() + 0.5F);*/
+			try {
+				player.getServer().getPlayerList().sendMessage(new TextComponentString(player.getDisplayNameString() + deathMessage.get(new Random().nextInt(deathMessage.size())) + " " + playerKillerName));
+			} catch (NullPointerException e) {
+				player.sendMessage(new TextComponentString(player.getDisplayNameString() + deathMessage.get(new Random().nextInt(deathMessage.size())) + " " + playerKillerName));
+			}
+			player.setHealth(-69420.0F);
+		}
 	}
 	
 	public static void killEntity(EntityLivingBase entity) {

@@ -7,6 +7,7 @@ import com.purble.skuylands.init.BlockInit;
 import com.purble.skuylands.init.EnchantmentInit;
 import com.purble.skuylands.init.EntityInit;
 import com.purble.skuylands.init.ItemInit;
+import com.purble.skuylands.init.PotionInit;
 import com.purble.skuylands.recipes.SmeltingRecipes;
 import com.purble.skuylands.world.gen.WorldGenCustomStructures;
 import com.purble.skuylands.world.gen.WorldGenOres;
@@ -34,15 +35,18 @@ public class RegistryHandler {
 	@SubscribeEvent
 	public static void onBlockRegister(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(BlockInit.BLOCKS.toArray(new Block[0]));
+		//ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLeaedTable.class, new RenderLeaedTable());
 	}
 	
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
 	public static void onModelRegiser(ModelRegistryEvent event) {
 		RenderHandler.registerEntityRenders();
+		//SkuyLands.proxy.registerItemRenderer(Item.getItemFromBlock(BlockInit.LEAED_TABLE), 0, "inventory");
 		for(Item item : ItemInit.ITEMS) {
 			SkuyLands.proxy.registerItemRenderer(item, 0, "inventory");
 		}
+		
 		for(Block block : BlockInit.BLOCKS) {
 			SkuyLands.proxy.registerItemRenderer(Item.getItemFromBlock(block), 0, "inventory");
 		}
@@ -60,6 +64,7 @@ public class RegistryHandler {
 		EntityInit.registerEntities();
 		ConfigHandler.registerConfig(event);
 		LootTableHandler.registerLootTables();
+		PotionInit.registerPotions();
 	}
 	
 	public static void init() {

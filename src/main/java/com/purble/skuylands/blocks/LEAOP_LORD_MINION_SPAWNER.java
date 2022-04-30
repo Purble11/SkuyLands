@@ -21,7 +21,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class LEAOP_LORD_MINION_SPAWNER extends Block {
-	// Add model to skuylands:models/block/ and add its structure
 	
 	public static final AxisAlignedBB LEAOP_LORD_MINION_SPAWNER = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D);
 
@@ -67,37 +66,41 @@ public class LEAOP_LORD_MINION_SPAWNER extends Block {
 	@Override
 	public void onBlockClicked(World worldIn, BlockPos pos, EntityPlayer playerIn) {
 		super.onBlockClicked(worldIn, pos, playerIn);
-		playerIn.swingArm(EnumHand.MAIN_HAND);
-		if(playerIn.getHeldItemMainhand().getItem() == ItemInit.UNKNOWN_LEAOP_KEY) {
-			EntityLeaopLordMinion entityLeaopLordMinion = new EntityLeaopLordMinion(worldIn);
-			entityLeaopLordMinion.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
-			worldIn.spawnEntity(entityLeaopLordMinion);
-			worldIn.setBlockToAir(pos);
+		if(!worldIn.isRemote) {
+			playerIn.swingArm(EnumHand.MAIN_HAND);
+			if(playerIn.getHeldItemMainhand().getItem() == ItemInit.UNKNOWN_LEAOP_KEY) {
+				EntityLeaopLordMinion entityLeaopLordMinion = new EntityLeaopLordMinion(worldIn);
+				entityLeaopLordMinion.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
+				worldIn.spawnEntity(entityLeaopLordMinion);
+				worldIn.setBlockToAir(pos);
+				
+				playerIn.getHeldItemMainhand().setCount(playerIn.getHeldItemMainhand().getCount() - 1);
+				
+				return;
+			}
 			
-			playerIn.getHeldItemMainhand().setCount(playerIn.getHeldItemMainhand().getCount() - 1);
-			
-			return;
+			playerIn.sendMessage(new TextComponentString("§cYou dont have the correct item in your hand!"));
 		}
-		
-		playerIn.sendMessage(new TextComponentString("&cYou dont have the correct item in your hand!"));
 	}
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		playerIn.swingArm(EnumHand.MAIN_HAND);
-		if(playerIn.getHeldItemMainhand().getItem() == ItemInit.UNKNOWN_LEAOP_KEY) {
-			EntityLeaopLordMinion entityLeaopLordMinion = new EntityLeaopLordMinion(worldIn);
-			entityLeaopLordMinion.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
-			worldIn.spawnEntity(entityLeaopLordMinion);
-			worldIn.setBlockToAir(pos);
+		if(!worldIn.isRemote) {
+			playerIn.swingArm(EnumHand.MAIN_HAND);
+			if(playerIn.getHeldItemMainhand().getItem() == ItemInit.UNKNOWN_LEAOP_KEY) {
+				EntityLeaopLordMinion entityLeaopLordMinion = new EntityLeaopLordMinion(worldIn);
+				entityLeaopLordMinion.setPosition(playerIn.posX, playerIn.posY, playerIn.posZ);
+				worldIn.spawnEntity(entityLeaopLordMinion);
+				worldIn.setBlockToAir(pos);
+				
+				playerIn.getHeldItemMainhand().setCount(playerIn.getHeldItemMainhand().getCount() - 1);
+				
+				return true;
+			}
 			
-			playerIn.getHeldItemMainhand().setCount(playerIn.getHeldItemMainhand().getCount() - 1);
-			
-			return true;
+			playerIn.sendMessage(new TextComponentString("§cYou dont have the correct item in your hand!"));
 		}
-		
-		playerIn.sendMessage(new TextComponentString("&cYou dont have the correct item in your hand!"));
 		return true;
 	}
 	

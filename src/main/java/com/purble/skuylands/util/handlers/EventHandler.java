@@ -9,9 +9,15 @@ public class EventHandler {
 	public static void registerEvents() {
 		LootTableEvent lootTableEvent = new LootTableEvent();
 		LivingAttackEvent livingAttackEvent = new LivingAttackEvent();
-		
+		EntityRightClEvent entityRightClEvent = new EntityRightClEvent();
+		SKLEntityTickEvent sklEntityTickEvent = new SKLEntityTickEvent();
+		SKLEntityBlockClickEvent sklEntityBlockClickEvent = new SKLEntityBlockClickEvent();
+
 		MinecraftForge.EVENT_BUS.register(lootTableEvent);
 		MinecraftForge.EVENT_BUS.register(livingAttackEvent);
+		MinecraftForge.EVENT_BUS.register(entityRightClEvent);
+		MinecraftForge.EVENT_BUS.register(sklEntityTickEvent);
+		MinecraftForge.EVENT_BUS.register(sklEntityBlockClickEvent);
 	}
 	
 }

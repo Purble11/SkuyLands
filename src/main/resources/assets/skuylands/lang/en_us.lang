@@ -19,6 +19,10 @@ item.leaop_pickaxe.name=Leaop Pickaxe
 item.leaop_axe.name=Leaop Axe
 item.leaop_shovel.name=Leaop Shovel
 item.leaop_hoe.name=Leaop HOe
+item.leaop_sidool.name=Leaop Sidool
+
+//Staffs
+item.leaop_soul_staff.name=Leaop Soul Staff
 
 //Ranged Weapons
 item.leaop_bow.name=Leaop Bow
@@ -43,3 +47,34 @@ tile.lea_grass_block.name=Lea Grass Block
 tile.lea_leaves.name=Lea Leaves
 tile.lea_planks.name=Lea Planks
 tile.leaop_lord_minion_spawner.name=Leaop Lord Minion Spawner
+tile.leaed_table.name=Leaed Table
+
+//Potions Effects
+effect.leaoped_potion=Leaoped Potion
+
+//Potions
+potion.effect.leaoped_potion=Potion of Leaoped Potion
+
+//Splash Potions
+splash_potion.effect.leaoped_potion=Splash Potion of Leaoped Potion
+
+//Lingering Potions
+lingering_potion.effect.leaoped_potion=Lingering Potion of Leaoped Potion
+
+//Potions Tipped Arrow
+tipped_arrow.effect.leaoped_potion=Arrow of Leaoped Potion
+
+//Advancements
+advancements.skuylands.visit_skuylands.title=Skuy Lands
+advancements.skuylands.visit_skuylands.description=Visit the Skuy Lands biome
+advancements.skuylands.get_leaop_ingot.title=Heavy But Shiny
+advancements.skuylands.get_leaop_ingot.description=Obtain The Leaop Ingot
+advancements.skuylands.drink_leaoped_potion.title=Get Leaoped
+advancements.skuylands.drink_leaoped_potion.description=Have The Leaoped Potion Effect
+advancements.skuylands.get_leaop_sidool.title=What????
+advancements.skuylands.get_leaop_sidool.description=Obtain The Leaop Sidool
+advancements.skuylands.craft_leaop_arrow.title=Very Sharp
+advancements.skuylands.craft_leaop_arrow.description=Craft The Leaop Arrow
+
+//Containers
+container.leaed_table=Leaed Table

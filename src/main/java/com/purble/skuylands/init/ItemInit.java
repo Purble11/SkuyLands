@@ -7,6 +7,8 @@ import com.purble.skuylands.items.LEAOPED_APPLE;
 import com.purble.skuylands.items.LEAOP_ARMOR;
 import com.purble.skuylands.items.LEAOP_ARROW;
 import com.purble.skuylands.items.LEAOP_INGOT;
+import com.purble.skuylands.items.LEAOP_SIDOOL;
+import com.purble.skuylands.items.LEAOP_SOUL_STAFF;
 import com.purble.skuylands.items.UNKNOWN_LEAOP_KEY;
 import com.purble.skuylands.items.tools.LEAOP_AXE;
 import com.purble.skuylands.items.tools.LEAOP_BOW;
@@ -29,9 +31,13 @@ public class ItemInit {
 	//I am using .toLowerCase() cuz i am lazy
 	public static final ArmorMaterial ARMOR_LEOP = EnumHelper.addArmorMaterial("ARMOR_LEOP".toLowerCase(), Referance.MOD_ID + ":leaop", 6000, new int[] {3, 6, 7, 4}, 100, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F); 
 	public static final ToolMaterial TOOL_LEAOP = EnumHelper.addToolMaterial("TOOL_LEAOP".toLowerCase(), 30, 6000, 38.5F, 1, 100);
+	public static final ToolMaterial TOOL_SIDOOL = EnumHelper.addToolMaterial("TOOL_SIDOOL".toLowerCase(), 73, 7500, 78.9F, 1, 70);
 	
 	public static final Item LEAOP_INGOT = new LEAOP_INGOT("LEAOP_INGOT".toLowerCase());
 	public static final Item UNKNOWN_LEAOP_KEY = new UNKNOWN_LEAOP_KEY("UNKNOWN_LEAOP_KEY".toLowerCase());
+	
+	public static final Item LEAOP_SOUL_STAFF = new LEAOP_SOUL_STAFF("LEAOP_SOUL_STAFF".toLowerCase());
+	public static final Item LEAOP_SIDOOL = new LEAOP_SIDOOL("LEAOP_SIDOOL".toLowerCase(), TOOL_SIDOOL);
 	
 	public static final Item LEAOPED_APPLE = new LEAOPED_APPLE("LEAOPED_APPLE".toLowerCase(), 20, 15.5F, false);
 	

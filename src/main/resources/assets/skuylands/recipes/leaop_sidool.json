@@ -1,0 +1,25 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		".I.",
+		"III",
+		".S."
+	],
+	
+	"key": {
+		"S": {
+			"item": "minecraft:stick"
+		},
+		"I": {
+			"item": "skuylands:leaop_ingot"
+		},
+		".": {
+			"item": "minecraft:air"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:leaop_sidool"
+	}
+}
