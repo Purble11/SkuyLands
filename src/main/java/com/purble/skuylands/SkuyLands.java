@@ -4,17 +4,22 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.purble.skuylands.init.BlockInit;
 import com.purble.skuylands.proxy.CommonProxy;
 import com.purble.skuylands.tabs.SkuyLandsTab;
 import com.purble.skuylands.util.Referance;
+import com.purble.skuylands.util.handlers.ConfigHandler;
+import com.purble.skuylands.util.handlers.DimTeleporter;
 import com.purble.skuylands.util.handlers.RegistryHandler;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -92,6 +97,64 @@ public class SkuyLands {
 	public static void killEntity(EntityLivingBase entity) {
 		entity.setHealth(-69420.0F);
 	} 
+	
+	public static void changeDimToSkuyLandsHome(EntityPlayer player) {
+		DimTeleporter.teleportToDimension(player, ConfigHandler.SKUYLANDS_HOME, 0, 75, 3000);
+		World world = player.getEntityWorld();
+		world.setBlockState(player.getPosition().add(1, -1, 0), BlockInit.SKUYLANDS_HOME_PORTAL.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, 0, 0), BlockInit.SKUYLANDS_HOME_PORTAL.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, 1, 0), BlockInit.SKUYLANDS_HOME_PORTAL.getDefaultState());
+		//half block part
+		Block firstHalf = BlockInit.LEA_PLANKS;
+		world.setBlockState(player.getPosition().add(1, -2, 0), firstHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, -2, 1), firstHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, -2, -1), firstHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, -1, 1), firstHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, -1, -1), firstHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, 0, -1), firstHalf.getDefaultState());
+		//other half block part
+		Block otherHalf = BlockInit.LEA_BARK;
+		world.setBlockState(player.getPosition().add(1, 1, -1), otherHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, 2, -1), otherHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, 2, 0), otherHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, 2, 1), otherHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, 1, 1), otherHalf.getDefaultState());
+		world.setBlockState(player.getPosition().add(1, 0, 1), otherHalf.getDefaultState());
+		
+		world.setBlockState(player.getPosition().down(), BlockInit.LEAED_VOID.getDefaultState());
+		//NVM Dimension Changing is Difficult
+		/*if(!player.world.isRemote) {
+			player.dimension = ConfigHandler.SKUYLANDS_HOME;
+			player.setPositionAndUpdate(0, 25, 0);
+			BlockPos startBlock = player.getPosition().add(0, -1, -5);
+			IBlockState floorBlockState = Blocks.BEDROCK.getDefaultState();
+			for(int i = 0; i <= 25; i++) {
+				player.world.setBlockState(startBlock.add(0, 0, i), floorBlockState);
+				player.world.setBlockState(startBlock.add(1, 0, i), floorBlockState);
+				player.world.setBlockState(startBlock.add(2, 0, i), floorBlockState);
+				player.world.setBlockState(startBlock.add(-1, 0, i), floorBlockState);
+				player.world.setBlockState(startBlock.add(-2, 0, i), floorBlockState);
+				//First Air Layer
+				player.world.setBlockState(startBlock.add(0, 1, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(1, 1, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(2, 1, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(-1, 1, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(-2, 1, i), Blocks.AIR.getDefaultState(), 3);
+				//Second Air Layer
+				player.world.setBlockState(startBlock.add(0, 2, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(1, 2, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(2, 2, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(-1, 2, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(-2, 2, i), Blocks.AIR.getDefaultState(), 3);
+				//Third Air Layer
+				player.world.setBlockState(startBlock.add(0, 3, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(1, 3, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(2, 3, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(-1, 3, i), Blocks.AIR.getDefaultState(), 3);
+				player.world.setBlockState(startBlock.add(-2, 3, i), Blocks.AIR.getDefaultState(), 3);
+			}
+		}*/
+	}
 	
 	/*private static void teleportEntityToCoordinates(Entity teleportingEntity, CommandBase.CoordinateArg argX, CommandBase.CoordinateArg argY, CommandBase.CoordinateArg argZ, CommandBase.CoordinateArg argYaw, CommandBase.CoordinateArg argPitch)
     {

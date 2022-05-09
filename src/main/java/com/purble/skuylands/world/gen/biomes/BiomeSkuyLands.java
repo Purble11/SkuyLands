@@ -31,6 +31,11 @@ public class BiomeSkuyLands extends Biome {
 		return 65535;
 	}
 	
+	@Override
+	public int getSkyColorByTemp(float currentTemperature) {
+		return 65535;
+	}
+	
 	/*@Override
 	public WorldGenAbstractTree getRandomTreeFeature(Random rand) {
 		return TREE;

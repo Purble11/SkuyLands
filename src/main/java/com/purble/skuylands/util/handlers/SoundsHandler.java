@@ -11,9 +11,21 @@ public class SoundsHandler {
 	public static SoundEvent LEAOP_LORD_MINION_AMBIENT;
 	public static SoundEvent LEAOP_LORD_MINION_DEATH;
 	
+	//SoundTypes
+	public static SoundEvent SOLID_VOID_BREAK;
+	public static SoundEvent SOLID_VOID_STEP;
+	public static SoundEvent SOLID_VOID_PLACE;
+	public static SoundEvent SOLID_VOID_HIT;
+	public static SoundEvent SOLID_VOID_FALL;
+	
 	public static void registerSounds() {
 		LEAOP_LORD_MINION_AMBIENT = registerSound("entity.leaop_lord_minion.LEAOP_LORD_MINION_AMBIENT".toLowerCase());
 		LEAOP_LORD_MINION_DEATH = registerSound("entity.leaop_lord_minion.LEAOP_LORD_MINION_DEATH".toLowerCase());
+		SOLID_VOID_BREAK = registerSound("blocks.solid_void.BREAK".toLowerCase());
+		SOLID_VOID_STEP = registerSound("blocks.solid_void.STEP".toLowerCase());
+		SOLID_VOID_PLACE = registerSound("blocks.solid_void.PLACE".toLowerCase());
+		SOLID_VOID_HIT = registerSound("blocks.solid_void.HIT".toLowerCase());
+		SOLID_VOID_FALL = registerSound("blocks.solid_void.FALL".toLowerCase());
 	}
 	
 	private static SoundEvent registerSound(String name) {

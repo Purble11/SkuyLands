@@ -12,6 +12,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.BlockRenderLayer;
 
 public class LEA_LEAVES extends Block {
 
@@ -22,6 +23,7 @@ public class LEA_LEAVES extends Block {
 		setCreativeTab(SkuyLands.skuylands);
 		this.setHardness(5);
 		this.setHarvestLevel("hoe", 3);
+        this.setLightOpacity(1);
 		this.setSoundType(SoundType.PLANT);
 		this.setResistance(this.blockHardness);
 		
@@ -30,8 +32,28 @@ public class LEA_LEAVES extends Block {
 	}
 	
 	@Override
+	public boolean isFullBlock(IBlockState state) {
+		return false;
+	}
+	
+	@Override
+	public boolean isFullCube(IBlockState state) {
+		return false;
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+	
+	@Override
+	public BlockRenderLayer getBlockLayer() {
+		return BlockRenderLayer.TRANSLUCENT;
+	}
+	
+	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return null;
+		return Item.getItemFromBlock(BlockInit.LEA_SAPLING);
 	}
 
 }

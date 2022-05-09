@@ -12,12 +12,15 @@ public class EventHandler {
 		EntityRightClEvent entityRightClEvent = new EntityRightClEvent();
 		SKLEntityTickEvent sklEntityTickEvent = new SKLEntityTickEvent();
 		SKLEntityBlockClickEvent sklEntityBlockClickEvent = new SKLEntityBlockClickEvent();
+		// Structure events don't work
+		//StructureEvents structureEvents = new StructureEvents();
 
 		MinecraftForge.EVENT_BUS.register(lootTableEvent);
 		MinecraftForge.EVENT_BUS.register(livingAttackEvent);
 		MinecraftForge.EVENT_BUS.register(entityRightClEvent);
 		MinecraftForge.EVENT_BUS.register(sklEntityTickEvent);
 		MinecraftForge.EVENT_BUS.register(sklEntityBlockClickEvent);
+		//MinecraftForge.EVENT_BUS.register(structureEvents);
 	}
 	
 }

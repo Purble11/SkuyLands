@@ -1,0 +1,18 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"B"
+	],
+	
+	"key": {
+		"L": {
+			"item": "skuylands:lea_bark"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:lea_log",
+		"count": 4
+	}
+}

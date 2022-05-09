@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"PSP",
+		"PSP"
+	],
+	
+	"key": {
+		"P": {
+			"item": "skuylands:lea_planks"
+		},
+		"S": {
+			"item": "minecraft:stick"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:lea_fence",
+		"count": 3
+	}
+}

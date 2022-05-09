@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_bottom",
+    "textures": {
+        "bottom": "skuylands:blocks/lea_door_bottom",
+        "top": "skuylands:blocks/lea_door_top"
+    }
+}

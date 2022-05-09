@@ -15,7 +15,13 @@ public class ConfigHandler {
 	public static int ENTITY_LEAOP_ARROW = 6912320;
 	public static int ENTITY_LEAOP_LORD_MINION = 69456291;
 	public static int ENTITY_LEAOP_LORD_MINION_PROJECTILE = 69789947;
+	
+	//Gui's
 	public static int GUI_LEAED_TABLE = 69101875;
+	public static int GUI_LEA_CHEST = 69132415;
+	
+	//Dimensions
+	public static int SKUYLANDS_HOME = 69849356;
 	
 	//Commands
 	public static boolean TOGGLE_KILLME = true;
@@ -34,8 +40,14 @@ public class ConfigHandler {
 		
 		category = "gui-ids";
 		config.addCustomCategoryComment(category, "Change Skuylands's Gui Ids");
+
+		GUI_LEAED_TABLE = config.getInt("LeaedTableGui", category, 69101875, 0, 99999999, "ID for any Leaed Table Gui");
+		GUI_LEA_CHEST = config.getInt("LeaChestGui", category, 69132415, 0, 99999999, "ID for any Lea Chest Gui");
 		
-		GUI_LEAED_TABLE = config.getInt("LeaedTableGui", category, 69101875, 0, 9999999, "ID for any Leaed Table Gui");
+		category = "dimension-ids";
+		config.addCustomCategoryComment(category, "Change Skuyland's Dimension Ids");
+		
+		SKUYLANDS_HOME = config.getInt("SkuyLandsHome", category, 69849356, 0, 99999999, "ID for the Skuylands's Home Dimension");
 		
 		category = "commands";
 		config.addCustomCategoryComment(category, "Enable or disable SkuyLands's Commands");

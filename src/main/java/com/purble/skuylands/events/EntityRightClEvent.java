@@ -1,26 +1,58 @@
 package com.purble.skuylands.events;
 
 import com.purble.skuylands.entity.leaoplordminion.EntityLeaopLordMinion;
+import com.purble.skuylands.init.BlockInit;
 import com.purble.skuylands.init.ItemInit;
 import com.purble.skuylands.init.PotionInit;
 import com.purble.skuylands.util.handlers.SoundsHandler;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityPainting;
+import net.minecraft.entity.item.EntityPainting.EnumArt;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class EntityRightClEvent {
+public class EntityRightClEvent {//Thrower:"player",Item:{id:"item:id",Count:6} and painting Motive:"mmotive"
 
 	@SubscribeEvent
 	public void onEntityRightClick(EntityInteract event) {
 		if(!event.getWorld().isRemote) {
-			if(event.getItemStack() != ItemStack.EMPTY && 
+			if(event.getTarget() instanceof EntityPainting && 
+					((EntityPainting)event.getTarget()).art == EnumArt.valueOf("StaffVSSidool")) {
+				if(event.getItemStack() != ItemStack.EMPTY && 
+						event.getItemStack().getItem() == Item.getItemFromBlock(BlockInit.LEAOP_BLOCK)) {
+					if(event.getItemStack().getCount() >= 6) {
+						event.getItemStack().setCount(event.getItemStack().getCount()
+								- 6);
+						event.getEntityPlayer().playSound(SoundEvents.ENTITY_VILLAGER_YES, Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MASTER), Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MASTER));
+						EntityItem leaop_soul_staff = new EntityItem(event.getWorld(), 
+								event.getPos().getX(), 
+								event.getPos().getY(), 
+								event.getPos().getZ(), 
+								new ItemStack(ItemInit.LEAOP_SOUL_STAFF));
+						EntityItem leaop_sidool = new EntityItem(event.getWorld(), 
+								event.getPos().getX(), 
+								event.getPos().getY(), 
+								event.getPos().getZ(), 
+								new ItemStack(ItemInit.LEAOP_SIDOOL));
+						event.getWorld().spawnEntity(leaop_soul_staff);
+						event.getWorld().spawnEntity(leaop_sidool);
+						((EntityPainting)event.getTarget()).setPositionAndUpdate(0, -69, 0);
+					} else {
+						event.getEntityPlayer().sendMessage(new TextComponentString("§cYou dont have the right amount to do this!"));
+					}
+				}
+			} else if(event.getItemStack() != ItemStack.EMPTY && 
 				event.getItemStack().getItem() == ItemInit.LEAOP_SOUL_STAFF) {
 				NBTTagCompound nbt;
 				if(event.getItemStack().hasTagCompound()) nbt = event.getItemStack().getTagCompound();

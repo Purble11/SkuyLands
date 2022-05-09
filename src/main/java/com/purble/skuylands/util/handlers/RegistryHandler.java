@@ -4,18 +4,21 @@ import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.commands.killme.CommandKillMe;
 import com.purble.skuylands.init.BiomeInit;
 import com.purble.skuylands.init.BlockInit;
+import com.purble.skuylands.init.DimensionInit;
 import com.purble.skuylands.init.EnchantmentInit;
 import com.purble.skuylands.init.EntityInit;
 import com.purble.skuylands.init.ItemInit;
 import com.purble.skuylands.init.PotionInit;
 import com.purble.skuylands.recipes.SmeltingRecipes;
 import com.purble.skuylands.world.gen.WorldGenCustomStructures;
+import com.purble.skuylands.world.gen.WorldGenCustomStructuresSKLH;
 import com.purble.skuylands.world.gen.WorldGenOres;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.event.ModelRegistryEvent;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -23,7 +26,7 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.SideOnly;//Make it so you can tp to "2500 (a safe y cord) 0" (The SkuyLands Home Town)
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -58,7 +61,9 @@ public class RegistryHandler {
 	}
 	
 	public static void preInit(FMLPreInitializationEvent event) {
+		DimensionInit.registerDimensions();
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenCustomStructuresSKLH(), 1);
 		EventHandler.registerEvents();
 		SoundsHandler.registerSounds();
 		EntityInit.registerEntities();
@@ -72,6 +77,8 @@ public class RegistryHandler {
 		GameRegistry.registerWorldGenerator(new WorldGenOres(), 4);
 		BiomeInit.registerBiomes();
 		SkuyLands.proxy.render();
+		EnumHelper.addArt("StaffVSSidool", "StaffVSSidool", 16 * 2, 16 * 2, 0, 160);
+		EnumHelper.addArt("SkuyLandsHomeFarIslands", "SkuyLandsHomeFarIslands", 16 * 3, 16 * 3, 64, 80);
 	}
 	
 	public static void postInit() {

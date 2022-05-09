@@ -38,6 +38,11 @@ enchantment.lea_undamage=Lea UnDamage
 //Sounds
 entity.leaop_lord_minion.leaop_lord_minion_death=Leaop Lord Minion Dies
 entity.leaop_lord_minion.leaop_lord_minion_ambient=Leaop Lord Minion Ambient
+blocks.solid_void.break=Block Broken
+blocks.solid_void.step=Entity Stepped
+blocks.solid_void.place=Block Placed
+blocks.solid_void.hit=Block Hit
+blocks.solid_void.fall=Entity Fell
 
 //Blocks
 tile.leaop_block.name=Block Of Leaop
@@ -48,6 +53,16 @@ tile.lea_leaves.name=Lea Leaves
 tile.lea_planks.name=Lea Planks
 tile.leaop_lord_minion_spawner.name=Leaop Lord Minion Spawner
 tile.leaed_table.name=Leaed Table
+tile.leaed_void.name=Leaed Void
+tile.lea_slab_half.name=Lea Slab
+tile.lea_stairs.name=Lea Stairs
+tile.lea_fence.name=Lea Fence
+tile.lea_pressure_plate.name=Lea Pressure Plate
+tile.lea_button.name=LEa Button
+tile.lea_door.name=Lea DOor
+tile.lea_trapdoor.name=Lea Trap Door
+tile.lea_bark.name=Lea Bark
+tile.lea_sapling.name=Lea Sapling
 
 //Potions Effects
 effect.leaoped_potion=Leaoped Potion
