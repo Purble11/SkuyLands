@@ -1,0 +1,21 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"AI",
+		"IA"
+	],
+	
+	"key": {
+		"A": {
+			"item": "skuylands:leaoped_apple"
+		},
+		"I": {
+			"item": "skuylands:leaop_ingot"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:leaoped_orb"
+	}
+}

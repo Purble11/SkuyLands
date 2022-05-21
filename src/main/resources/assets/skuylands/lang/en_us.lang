@@ -27,6 +27,7 @@ item.leaop_soul_staff.name=Leaop Soul Staff
 //Ranged Weapons
 item.leaop_bow.name=Leaop Bow
 item.leaop_arrow.name=Leaop Arrow
+item.leaoped_orb.name=Leaoped Orb
 
 //Entities
 entity.leaop_arrow.name=Leaop Arrow
@@ -63,6 +64,7 @@ tile.lea_door.name=Lea DOor
 tile.lea_trapdoor.name=Lea Trap Door
 tile.lea_bark.name=Lea Bark
 tile.lea_sapling.name=Lea Sapling
+tile.lea_chest.name=Lea Chest
 
 //Potions Effects
 effect.leaoped_potion=Leaoped Potion
@@ -93,3 +95,4 @@ advancements.skuylands.craft_leaop_arrow.description=Craft The Leaop Arrow
 
 //Containers
 container.leaed_table=Leaed Table
+container.lea_chest=Lea Chest

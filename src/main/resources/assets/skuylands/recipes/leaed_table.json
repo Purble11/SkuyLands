@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"III",
+		"ITI",
+		"III"
+	],
+	
+	"key": {
+		"I": {
+			"item": "skuylands:leaop_ingot"
+		},
+		"T": {
+			"item": "minecraft:crafting_table"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:leaed_table"
+	}
+}

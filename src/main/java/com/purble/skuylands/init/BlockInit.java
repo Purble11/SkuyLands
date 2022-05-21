@@ -41,5 +41,6 @@ public class BlockInit {
 	public static final Block SKUYLANDS_HOME_PORTAL = new SKUYLANDS_HOME_PORTAL("SKUYLANDS_HOME_PORTAL".toLowerCase());
 	public static final Block LEA_BARK = new LEA_BARK("LEA_BARK".toLowerCase());
 	public static final Block LEA_SAPLING = new LEA_SAPLING("LEA_SAPLING".toLowerCase());
-	//public static final Block LEAED_TABLE = new com.purble.skuylands.blocks.leaed_table.LEAED_TABLE("LEAED_TABLE".toLowerCase(), Material.IRON);
+	public static final Block LEAED_TABLE = new com.purble.skuylands.blocks.leaed_table.LEAED_TABLE("LEAED_TABLE".toLowerCase(), Material.IRON);
+	public static final Block LEA_CHEST = new com.purble.skuylands.blocks.lea_chest.LEA_CHEST("LEA_CHEST".toLowerCase(), Material.IRON);
 }

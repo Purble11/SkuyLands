@@ -1,6 +1,6 @@
 [
 {
-  "modid": "skuyLands",
+  "modid": "skuylands",
   "name": "Skuy Lands",
   "description": "A mod made by Purble",
   "version": "${version}",
@@ -11,6 +11,7 @@
   "credits": "Me, I guess",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": [ "jei" ],
+  "useDependencyInformation": true
 }
 ]

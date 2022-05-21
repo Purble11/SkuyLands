@@ -1,5 +1,6 @@
 package com.purble.skuylands.proxy;
 
+import com.purble.skuylands.entity.EntityLeaopedOrbProjectile;
 import com.purble.skuylands.entity.leaoplordminionarrow.EntityLeaopLordMinionProjectile;
 import com.purble.skuylands.init.ItemInit;
 
@@ -19,5 +20,6 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void render() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLeaopLordMinionProjectile.class, new RenderSnowball<EntityLeaopLordMinionProjectile>(Minecraft.getMinecraft().getRenderManager(), ItemInit.LEAOP_INGOT, Minecraft.getMinecraft().getRenderItem()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityLeaopedOrbProjectile.class, new RenderSnowball<EntityLeaopedOrbProjectile>(Minecraft.getMinecraft().getRenderManager(), ItemInit.LEAOPED_ORB, Minecraft.getMinecraft().getRenderItem()));
 	}
 }

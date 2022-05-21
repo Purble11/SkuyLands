@@ -1,6 +1,7 @@
 package com.purble.skuylands.util.handlers;
 
 import com.purble.skuylands.SkuyLands;
+import com.purble.skuylands.blocks.lea_chest.TileEntityLeaChest;
 import com.purble.skuylands.commands.killme.CommandKillMe;
 import com.purble.skuylands.init.BiomeInit;
 import com.purble.skuylands.init.BlockInit;
@@ -10,6 +11,7 @@ import com.purble.skuylands.init.EntityInit;
 import com.purble.skuylands.init.ItemInit;
 import com.purble.skuylands.init.PotionInit;
 import com.purble.skuylands.recipes.SmeltingRecipes;
+import com.purble.skuylands.util.Referance;
 import com.purble.skuylands.world.gen.WorldGenCustomStructures;
 import com.purble.skuylands.world.gen.WorldGenCustomStructuresSKLH;
 import com.purble.skuylands.world.gen.WorldGenOres;
@@ -17,6 +19,7 @@ import com.purble.skuylands.world.gen.WorldGenOres;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.RegistryEvent;
@@ -24,6 +27,7 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;//Make it so you can tp to "2500 (a safe y cord) 0" (The SkuyLands Home Town)
@@ -64,6 +68,7 @@ public class RegistryHandler {
 		DimensionInit.registerDimensions();
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructures(), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenCustomStructuresSKLH(), 1);
+		NetworkRegistry.INSTANCE.registerGuiHandler(SkuyLands.instance, new GuiHandler());
 		EventHandler.registerEvents();
 		SoundsHandler.registerSounds();
 		EntityInit.registerEntities();
@@ -75,6 +80,7 @@ public class RegistryHandler {
 	public static void init() {
 		SmeltingRecipes.init();
 		GameRegistry.registerWorldGenerator(new WorldGenOres(), 4);
+		GameRegistry.registerTileEntity(TileEntityLeaChest.class, new ResourceLocation(Referance.MOD_ID, "tile_lea_chest"));
 		BiomeInit.registerBiomes();
 		SkuyLands.proxy.render();
 		EnumHelper.addArt("StaffVSSidool", "StaffVSSidool", 16 * 2, 16 * 2, 0, 160);

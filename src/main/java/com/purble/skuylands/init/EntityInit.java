@@ -2,6 +2,7 @@ package com.purble.skuylands.init;
 
 import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.entity.EntityLeaopArrow;
+import com.purble.skuylands.entity.EntityLeaopedOrbProjectile;
 import com.purble.skuylands.entity.leaoplordminion.EntityLeaopLordMinion;
 import com.purble.skuylands.entity.leaoplordminionarrow.EntityLeaopLordMinionProjectile;
 import com.purble.skuylands.util.Referance;
@@ -18,6 +19,7 @@ public class EntityInit {
 		registerArrow("leaop_arrow", EntityLeaopArrow.class, ConfigHandler.ENTITY_LEAOP_ARROW);
 		registerEntity("leaop_lord_minion", EntityLeaopLordMinion.class, ConfigHandler.ENTITY_LEAOP_LORD_MINION, 50, 30975, 65535);
 		registerProjectile("leaop_lord_minion_projectile", EntityLeaopLordMinionProjectile.class, ConfigHandler.ENTITY_LEAOP_LORD_MINION_PROJECTILE, ItemInit.LEAOP_INGOT);
+		registerProjectile("leaoped_orb_projectile", EntityLeaopedOrbProjectile.class, ConfigHandler.ENTITY_LEAOPED_ORB_PROJECTILE, ItemInit.LEAOPED_ORB);
 	}
 	
 	private static void registerEntity(String name, Class<? extends Entity> entity, int id, int range, int color1, int color2) {

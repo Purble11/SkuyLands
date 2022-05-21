@@ -1,12 +1,8 @@
 package com.purble.skuylands.potions;
 
-import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.util.Referance;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.ai.attributes.AbstractAttributeMap;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 

@@ -2,7 +2,7 @@
     "parent": "block/cube",
     "textures": {
         "particle": "skuylands:blocks/leaed_table_top",
-        "down": "skuylands:blocks/leaed_table_bottom",
+        "down": "skuylands:blocks/lea_planks",
         "up": "skuylands:blocks/leaed_table_top",
         "north": "skuylands:blocks/leaed_table_north",
         "east": "skuylands:blocks/leaed_table_east",

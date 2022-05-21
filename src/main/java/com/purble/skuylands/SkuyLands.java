@@ -29,10 +29,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Referance.MOD_ID, version = Referance.VERSION, name = Referance.NAME)
+@Mod(modid = Referance.MOD_ID, version = Referance.VERSION, name = Referance.NAME, dependencies = SkuyLands.DEPENDENCIES)
 public class SkuyLands {
 	
 	public static File config;
+	protected static final String DEPENDENCIES = "required-after:jei";
 	
 	@Instance
 	public static SkuyLands instance;
@@ -77,6 +78,7 @@ public class SkuyLands {
 			
 			inv.dropAllItems();
 			inv.clear();
+			DimTeleporter.teleportToDimension(player, 0, 0, 0, 0);
 			try {
 				((EntityPlayerMP)player).connection.setPlayerLocation((double) player.getBedLocation().getX() + 0.5F, player.getBedLocation().getY(), (double) player.getBedLocation().getZ() + 0.5F, 1.0F, 1.0F);
 			} catch (NullPointerException e) {
@@ -221,7 +223,7 @@ public class SkuyLands {
         }
     }*/
 	
-	public SkuyLands getInstance() {
+	public static SkuyLands getInstance() {
 		return instance;
 	}
 }

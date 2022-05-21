@@ -1,13 +1,19 @@
 package com.purble.skuylands.events;
 
+import java.util.Random;
+
+import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.init.EnchantmentInit;
 import com.purble.skuylands.init.ItemInit;
+import com.purble.skuylands.init.PotionInit;
 
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EntityDamageSource;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class LivingAttackEvent {
@@ -27,6 +33,30 @@ public class LivingAttackEvent {
 			}
 		}
 		
+		Entity attackerIn = null;
+		
+		try {
+			attackerIn = ((EntityDamageSource)event.getSource()).getTrueSource();
+			
+			if(attackerIn instanceof EntityLivingBase) {
+				EntityLivingBase attacker = (EntityLivingBase)attackerIn;
+				
+				attacker.getActivePotionEffects().forEach(potioneffect -> {
+					if(potioneffect.getPotion() == PotionInit.LEAOPED_POTION_EFFECT) {
+						if(new Random().nextInt(100) <= 50) {
+							event.setCanceled(true);
+							
+							if(attacker instanceof EntityPlayer)
+								SkuyLands.killPlayer((EntityPlayer)attacker, "Leaoped Potion");
+							else
+								SkuyLands.killEntity(attacker);
+						}
+					}
+				});
+			}
+		} catch (ClassCastException e) {
+		}
+
 		int value = 32;// Added this so i can edit it to lower or buff it
 		//System.out.println("Skuylands-Debug: is the enchantment working???????????");
 		if(event.getEntityLiving() instanceof EntityPlayer) {
