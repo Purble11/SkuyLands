@@ -7,8 +7,13 @@ import com.purble.skuylands.init.SoundTypeInit;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
+import net.minecraftforge.common.IPlantable;
 
 public class LEAED_VOID extends Block {
 
@@ -29,6 +34,15 @@ public class LEAED_VOID extends Block {
 	@Override
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.TRANSLUCENT;
+	}
+	
+	@Override
+	public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction,
+			IPlantable plantable) {
+		if(plantable instanceof LEAOP_CROP) {
+			return true;
+		}
+		return false;
 	}
 	
 }

@@ -3,6 +3,8 @@ itemGroup.skuylandstab=SkuyLands Mod
 //Items
 item.leaop_ingot.name=Leaop Ingot
 item.unknown_leaop_key.name=Unknown Leaop Key
+item.leaoped_sparks.name=Leaoped Sparks
+item.lea_boat.name=Lea Boat
 
 //Foods
 item.leaoped_apple.name=Leaoped Apple
@@ -32,6 +34,7 @@ item.leaoped_orb.name=Leaoped Orb
 //Entities
 entity.leaop_arrow.name=Leaop Arrow
 entity.leaop_lord_minion.name=Leaop Lord Minion
+entity.lea_pet.name=Lea Pet
 
 //Enchantments
 enchantment.lea_undamage=Lea UnDamage
@@ -65,6 +68,7 @@ tile.lea_trapdoor.name=Lea Trap Door
 tile.lea_bark.name=Lea Bark
 tile.lea_sapling.name=Lea Sapling
 tile.lea_chest.name=Lea Chest
+tile.lea_fence_gate.name=Lea Fence Gate
 
 //Potions Effects
 effect.leaoped_potion=Leaoped Potion

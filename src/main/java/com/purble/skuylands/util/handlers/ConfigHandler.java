@@ -16,6 +16,8 @@ public class ConfigHandler {
 	public static int ENTITY_LEAOP_LORD_MINION = 69456291;
 	public static int ENTITY_LEAOP_LORD_MINION_PROJECTILE = 69789947;
 	public static int ENTITY_LEAOPED_ORB_PROJECTILE = 697493629;
+	public static int ENTITY_LEA_PET = 693942091;
+	public static int ENTITY_LEA_BOAT = 699476601;
 	
 	//Gui's
 	public static int GUI_LEAED_TABLE = 69101875;
@@ -39,6 +41,8 @@ public class ConfigHandler {
 		ENTITY_LEAOP_LORD_MINION = config.getInt("LeaopLordMinion", category, 69456291, 0, 999999999, "ID for any Leaop Lord Minion");
 		ENTITY_LEAOP_LORD_MINION_PROJECTILE = config.getInt("LeaopLordMinionProjectile", category, 69789947, 0, 999999999, "ID for any Leaop Lord Minion Attack Projectile");
 		ENTITY_LEAOPED_ORB_PROJECTILE = config.getInt("LeaopedOrbProjectile", category, 697493629, 0, 999999999, "ID for any Thrown Leaoped Orb");
+		ENTITY_LEA_PET = config.getInt("LeaPet", category, 693942091, 0, 999999999, "ID for any Lea Pet");
+		ENTITY_LEA_BOAT = config.getInt("LeaBoat", category, 699476601, 0, 999999999, "ID for any Lea Boat");
 		
 		category = "gui-ids";
 		config.addCustomCategoryComment(category, "Change Skuylands's Gui Ids");

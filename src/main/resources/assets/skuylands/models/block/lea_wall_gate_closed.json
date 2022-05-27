@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_gate_closed",
+    "textures": {
+        "texture": "skuylands:blocks/lea_planks"
+    }
+}

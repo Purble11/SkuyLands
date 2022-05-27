@@ -43,4 +43,7 @@ public class BlockInit {
 	public static final Block LEA_SAPLING = new LEA_SAPLING("LEA_SAPLING".toLowerCase());
 	public static final Block LEAED_TABLE = new com.purble.skuylands.blocks.leaed_table.LEAED_TABLE("LEAED_TABLE".toLowerCase(), Material.IRON);
 	public static final Block LEA_CHEST = new com.purble.skuylands.blocks.lea_chest.LEA_CHEST("LEA_CHEST".toLowerCase(), Material.IRON);
+	public static final Block LEAOP_CROP = new LEAOP_CROP("LEAOP_CROP".toLowerCase());
+	public static final Block LEA_FENCE_GATE =  new com.purble.skuylands.blocks.lea_wood.fence_gate.LEA_FENCE_GATE("LEA_FENCE_GATE".toLowerCase());
+	
 }

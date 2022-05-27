@@ -7,6 +7,7 @@ import com.purble.skuylands.init.BlockInit;
 import com.purble.skuylands.world.gen.biomes.BiomeSkuyLands;
 import com.purble.skuylands.world.gen.biomes.WorldGenStructureSKLH;
 import com.purble.skuylands.world.gen.biomes.WorldGenStructureSKLH2;
+import com.purble.skuylands.world.gen.biomes.WorldGenStructureSKLH3;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
@@ -21,11 +22,13 @@ public class WorldGenCustomStructuresSKLH implements IWorldGenerator {
 
 	public static final WorldGenStructureSKLH TREE = new WorldGenStructureSKLH("skuylandstree");
 	public static final WorldGenStructureSKLH2 LEAOP_LORD_MINION_STRUCTURE = new WorldGenStructureSKLH2("LEAOP_LORD_MINION_STRUCTURE".toLowerCase());
+	public static final WorldGenStructureSKLH3 LEAOP_LORDS_WEAPONS_TOWER = new WorldGenStructureSKLH3("LEAOP_LORDS_WEAPONS_TOWER".toLowerCase());
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) {
 		generateStructure(LEAOP_LORD_MINION_STRUCTURE, world, random, chunkX, chunkZ, 65, BlockInit.LEAED_VOID, BiomeSkuyLands.class);
+		generateStructure(LEAOP_LORDS_WEAPONS_TOWER, world, random, chunkX, chunkZ, 89, BlockInit.LEAED_VOID, BiomeSkuyLands.class);
 		generateStructure(TREE, world, random, chunkX, chunkZ, 1, BlockInit.LEAED_VOID, BiomeSkuyLands.class);
 		generateStructure(TREE, world, random, chunkX, chunkZ, 1, BlockInit.LEAED_VOID, BiomeSkuyLands.class);
 		generateStructure(TREE, world, random, chunkX, chunkZ, 1, BlockInit.LEAED_VOID, BiomeSkuyLands.class);

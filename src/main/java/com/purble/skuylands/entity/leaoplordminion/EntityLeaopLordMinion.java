@@ -20,7 +20,6 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BossInfo;
@@ -44,33 +43,34 @@ public class EntityLeaopLordMinion extends EntityMob implements IRangedAttackMob
 		return super.onInitialSpawn(difficulty, livingdata);
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	protected void initEntityAI() {
 		// WHY DOES ECLIPSE GIVE ME ERRORS WHEN A CTRL SPACE ON NEW ENTITYAI
-        this.tasks.addTask(0, new EntityAISwimming(this));
-        this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
-        this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        this.tasks.addTask(8, new EntityAILookIdle(this));
-        this.tasks.addTask(2, new EntityAIWander(this, 1.0F));
-        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[] {EntityPigZombie.class}));
-        this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		this.tasks.addTask(0, new EntityAISwimming(this));
+		this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
+		this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+		this.tasks.addTask(8, new EntityAILookIdle(this));
+		this.tasks.addTask(2, new EntityAIWander(this, 1.0F));
+		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[] {EntityPigZombie.class}));
+		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 	}
 
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
 		EntityLeaopLordMinionProjectile entityarrow = this.getArrow(distanceFactor);
-        double d0 = target.posX - this.posX;
-        double d1 = target.getEntityBoundingBox().minY + (double)(target.height / 3.0F) - entityarrow.posY;
-        double d2 = target.posZ - this.posZ;
-        double d3 = (double)MathHelper.sqrt(d0 * d0 + d2 * d2);
-        entityarrow.shoot(d0, d1 + d3 * 0.20000000298023224D, d2, 1.6F, 1.0F);
-        this.world.spawnEntity(entityarrow);
+		double d0 = target.posX - this.posX;
+		double d1 = target.getEntityBoundingBox().minY + (double)(target.height / 3.0F) - entityarrow.posY;
+		double d2 = target.posZ - this.posZ;
+		double d3 = (double)MathHelper.sqrt(d0 * d0 + d2 * d2);
+		entityarrow.shoot(d0, d1 + d3 * 0.20000000298023224D, d2, 1.6F, 1.0F);
+		this.world.spawnEntity(entityarrow);
 	}
 	
-    protected EntityLeaopLordMinionProjectile getArrow(float p_190726_1_)
-    {
-        return new EntityLeaopLordMinionProjectile(this.world, this);
-    }
+	protected EntityLeaopLordMinionProjectile getArrow(float p_190726_1_)
+	{
+		return new EntityLeaopLordMinionProjectile(this.world, this);
+	}
 
 	@Override
 	public void setSwingingArms(boolean swingingArms) {
@@ -84,11 +84,10 @@ public class EntityLeaopLordMinion extends EntityMob implements IRangedAttackMob
 	}
 	
 	private void setCombatTask() {
-		if (this.world != null && !this.world.isRemote)
-        {
-            this.tasks.removeTask(this.aiArrowAttack);
-            this.tasks.addTask(4, this.aiArrowAttack);
-        }
+		if (this.world != null && !this.world.isRemote) {
+			this.tasks.removeTask(this.aiArrowAttack);
+			this.tasks.addTask(4, this.aiArrowAttack);
+		}
 	}
 	
 	@Override

@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.init.ItemInit;
+import com.purble.skuylands.items.LEAOP_ARROW;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,7 +14,6 @@ import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.IItemPropertyGetter;
-import net.minecraft.item.ItemArrow;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
@@ -58,7 +58,7 @@ public class LEAOP_BOW extends ItemBow {
 		if (entityLiving instanceof EntityPlayer)
         {
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;
-            boolean flag = /*entityplayer.capabilities.isCreativeMode || */EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
+            boolean flag = entityplayer.capabilities.isCreativeMode || EnchantmentHelper.getEnchantmentLevel(Enchantments.INFINITY, stack) > 0;
             ItemStack itemstack = this.findAmmo(entityplayer);
 
             int i = this.getMaxItemUseDuration(stack) - timeLeft;
@@ -69,18 +69,18 @@ public class LEAOP_BOW extends ItemBow {
             {
                 if (itemstack.isEmpty())
                 {
-                    itemstack = new ItemStack(Items.ARROW);
+                    itemstack = new ItemStack(ItemInit.LEAOP_ARROW);
                 }
 
                 float f = getArrowVelocity(i);
 
                 if ((double)f >= 0.1D)
                 {
-                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof ItemArrow && ((ItemArrow) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
+                    boolean flag1 = entityplayer.capabilities.isCreativeMode || (itemstack.getItem() instanceof LEAOP_ARROW && ((LEAOP_ARROW) itemstack.getItem()).isInfinite(itemstack, stack, entityplayer));
 
                     if (!worldIn.isRemote)
                     {
-                        ItemArrow itemarrow = (ItemArrow)(itemstack.getItem() instanceof ItemArrow ? itemstack.getItem() : Items.ARROW);
+                    	LEAOP_ARROW itemarrow = (LEAOP_ARROW)(itemstack.getItem() instanceof LEAOP_ARROW ? itemstack.getItem() : ItemInit.LEAOP_ARROW);
                         EntityArrow entityarrow = itemarrow.createArrow(worldIn, itemstack, entityplayer);
                         entityarrow = this.customizeArrow(entityarrow);
                         entityarrow.shoot(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0.0F, f * 3.0F, 1.0F);
