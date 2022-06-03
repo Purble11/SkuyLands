@@ -2,7 +2,6 @@ package com.purble.skuylands.events;
 
 import java.util.Random;
 
-import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.init.EnchantmentInit;
 import com.purble.skuylands.init.ItemInit;
 import com.purble.skuylands.init.PotionInit;
@@ -46,10 +45,7 @@ public class LivingAttackEvent {
 						if(new Random().nextInt(100) <= 50) {
 							event.setCanceled(true);
 							
-							if(attacker instanceof EntityPlayer)
-								SkuyLands.killPlayer((EntityPlayer)attacker, "Leaoped Potion");
-							else
-								SkuyLands.killEntity(attacker);
+							attacker.setHealth(attacker.getHealth() - 63);
 						}
 					}
 				});

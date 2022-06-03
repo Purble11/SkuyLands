@@ -1,0 +1,30 @@
+{
+    "display": {
+        "title": {
+            "translate": "advancements.skuylands.find_leaed_charge_matter.title"
+        },
+        "description": {
+            "translate": "advancements.skuylands.find_leaed_charge_matter.description"
+        },
+        "icon": {
+            "item": "skuylands:leaed_charge_matter"
+        },
+        "frame": "goal"
+    },
+    "criteria": {
+        "leaop_sidool": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "skuylands:leaed_charge_matter"
+                    }
+                ]
+            }
+        }
+    },
+    "parent": "skuylands:skuylands/get_leaop_sidool",
+    "rewards": {
+        "experience": 51
+    }
+}

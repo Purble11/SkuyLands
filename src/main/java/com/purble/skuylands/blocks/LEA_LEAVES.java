@@ -48,6 +48,7 @@ public class LEA_LEAVES extends Block {
 	}
 	
 	@Override
+	@SideOnly(Side.CLIENT)
 	public boolean isOpaqueCube(IBlockState state) {
 		return !Minecraft.isFancyGraphicsEnabled();
 	}

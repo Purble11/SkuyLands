@@ -5,10 +5,12 @@ import java.util.Map;
 
 import com.google.common.base.Supplier;
 import com.purble.skuylands.init.BlockInit;
+import com.purble.skuylands.init.ItemInit;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryBasic;
@@ -246,6 +248,8 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 		});
 		
 		if(isChestRecipe(slots)) return new ItemStack(BlockInit.LEA_CHEST, 3);
+		if(isStaff(slots)) return new ItemStack(ItemInit.POWERED_LEA_STAFF);
+		if(isShard(slots)) return new ItemStack(ItemInit.POWERED_LEAOP_SHARD, 2);
 		return ItemStack.EMPTY;
 	}
 	
@@ -267,6 +271,57 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 				&& items.get(24) == firstItem && items.get(25) == firstItem 
 				&& items.get(26) == firstItem && items.get(27) == firstItem 
 				&& items.get(28) == firstItem && items.get(29) == firstItem 
+				&& items.get(30) == firstItem && items.get(31) == firstItem 
+				&& items.get(32) == firstItem && items.get(33) == firstItem 
+				&& items.get(34) == firstItem && items.get(35) == firstItem) return true;
+		return false;
+	}
+	
+	private boolean isStaff(Map<Integer, Item> items) {
+		Item firstItem = Items.AIR;
+		Item secondItem = ItemInit.POWERED_LEAOP_SHARD;
+		Item thirdItem = Items.STICK;
+		if(items.get(0) == firstItem && items.get(1) == firstItem 
+				&& items.get(2) == secondItem && items.get(3) == secondItem 
+				&& items.get(4) == firstItem && items.get(5) == firstItem 
+				&& items.get(6) == firstItem && items.get(7) == secondItem 
+				&& items.get(8) == firstItem && items.get(9) == secondItem 
+				&& items.get(10) == firstItem && items.get(11) == firstItem 
+				&& items.get(12) == firstItem && items.get(13) == firstItem 
+				&& items.get(14) == firstItem && items.get(15) == secondItem 
+				&& items.get(16) == firstItem && items.get(17) == firstItem 
+				&& items.get(18) == firstItem && items.get(19) == firstItem 
+				&& items.get(20) == firstItem && items.get(21) == thirdItem 
+				&& items.get(22) == firstItem && items.get(23) == firstItem 
+				&& items.get(24) == firstItem && items.get(25) == firstItem 
+				&& items.get(26) == firstItem && items.get(27) == thirdItem 
+				&& items.get(28) == firstItem && items.get(29) == firstItem 
+				&& items.get(30) == firstItem && items.get(31) == firstItem 
+				&& items.get(32) == firstItem && items.get(33) == thirdItem 
+				&& items.get(34) == firstItem && items.get(35) == firstItem) return true;
+		return false;
+	}
+	
+
+	
+	private boolean isShard(Map<Integer, Item> items) {
+		Item firstItem = ItemInit.LEAED_CHARGE_MATTER;
+		Item secondItem = ItemInit.LEAOP_INGOT;
+		if(items.get(0) == firstItem && items.get(1) == firstItem 
+				&& items.get(2) == firstItem && items.get(3) == firstItem 
+				&& items.get(4) == firstItem && items.get(5) == firstItem 
+				&& items.get(6) == firstItem && items.get(7) == secondItem 
+				&& items.get(8) == secondItem && items.get(9) == secondItem 
+				&& items.get(10) == secondItem && items.get(11) == firstItem 
+				&& items.get(12) == firstItem && items.get(13) == secondItem 
+				&& items.get(14) == secondItem && items.get(15) == secondItem 
+				&& items.get(16) == secondItem && items.get(17) == firstItem 
+				&& items.get(18) == firstItem && items.get(19) == secondItem 
+				&& items.get(20) == secondItem && items.get(21) == secondItem 
+				&& items.get(22) == secondItem && items.get(23) == firstItem 
+				&& items.get(24) == firstItem && items.get(25) == secondItem 
+				&& items.get(26) == secondItem && items.get(27) == secondItem 
+				&& items.get(28) == secondItem && items.get(29) == firstItem 
 				&& items.get(30) == firstItem && items.get(31) == firstItem 
 				&& items.get(32) == firstItem && items.get(33) == firstItem 
 				&& items.get(34) == firstItem && items.get(35) == firstItem) return true;

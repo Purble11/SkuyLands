@@ -34,10 +34,13 @@ public class WorldGenStructure2 extends WorldGenerator implements IStructure {
 		ResourceLocation location = new ResourceLocation(Referance.MOD_ID, structureName);
 		Template template = manager.get(mcServer, location);
 		
+		int offsetX = template.getSize().getX() / 2;
+		int offsetZ = template.getSize().getZ() / 2;
+		
 		if(template != null) {
-			IBlockState state = world.getBlockState(pos);
-			world.notifyBlockUpdate(pos, state, state, 3);
-			template.addBlocksToWorld(world, pos, setting);
+			IBlockState state = world.getBlockState(pos.add(-offsetX, 0, -offsetZ));
+			world.notifyBlockUpdate(pos.add(-offsetX, 0, -offsetZ), state, state, 3);
+			template.addBlocksToWorld(world, pos.add(-offsetX, 0, -offsetZ), setting);
 		}
 	}
 

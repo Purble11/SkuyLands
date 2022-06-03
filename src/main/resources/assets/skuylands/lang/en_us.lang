@@ -5,6 +5,8 @@ item.leaop_ingot.name=Leaop Ingot
 item.unknown_leaop_key.name=Unknown Leaop Key
 item.leaoped_sparks.name=Leaoped Sparks
 item.lea_boat.name=Lea Boat
+item.powered_leaop_shard.name=Powered Leaop Shard
+item.leaed_charge_matter.name=Leaed Charge Matter
 
 //Foods
 item.leaoped_apple.name=Leaoped Apple
@@ -25,6 +27,7 @@ item.leaop_sidool.name=Leaop Sidool
 
 //Staffs
 item.leaop_soul_staff.name=Leaop Soul Staff
+item.powered_lea_staff.name=Powered Lea Staff
 
 //Ranged Weapons
 item.leaop_bow.name=Leaop Bow
@@ -74,16 +77,16 @@ tile.lea_fence_gate.name=Lea Fence Gate
 effect.leaoped_potion=Leaoped Potion
 
 //Potions
-potion.effect.leaoped_potion=Potion of Leaoped Potion
+potion.effect.leaoped_potion=Potion of Leaoped
 
 //Splash Potions
-splash_potion.effect.leaoped_potion=Splash Potion of Leaoped Potion
+splash_potion.effect.leaoped_potion=Splash Potion of Leaoped
 
 //Lingering Potions
-lingering_potion.effect.leaoped_potion=Lingering Potion of Leaoped Potion
+lingering_potion.effect.leaoped_potion=Lingering Potion of Leaoped
 
 //Potions Tipped Arrow
-tipped_arrow.effect.leaoped_potion=Arrow of Leaoped Potion
+tipped_arrow.effect.leaoped_potion=Arrow of Leaoped
 
 //Advancements
 advancements.skuylands.visit_skuylands.title=Skuy Lands
@@ -96,6 +99,12 @@ advancements.skuylands.get_leaop_sidool.title=What????
 advancements.skuylands.get_leaop_sidool.description=Obtain The Leaop Sidool
 advancements.skuylands.craft_leaop_arrow.title=Very Sharp
 advancements.skuylands.craft_leaop_arrow.description=Craft The Leaop Arrow
+advancements.skuylands.find_leaed_charge_matter.title=Oooo Fire Thing
+advancements.skuylands.find_leaed_charge_matter.description=Find an Leaed Charge Matter
+advancements.skuylands.forge_powered_lea_staff.title=Hard to get, But Worth It
+advancements.skuylands.forge_powered_lea_staff.description=Forge an Powered Lea Staff
+advancements.skuylands.forge_powered_leaop_shard.title=Noice, Another On Fire Item
+advancements.skuylands.forge_powered_leaop_shard.description=Forge an Powered Leaop Shard
 
 //Containers
 container.leaed_table=Leaed Table

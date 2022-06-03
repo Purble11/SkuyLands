@@ -12,9 +12,9 @@ import com.purble.skuylands.init.ItemInit;
 import com.purble.skuylands.init.PotionInit;
 import com.purble.skuylands.recipes.SmeltingRecipes;
 import com.purble.skuylands.util.Referance;
+import com.purble.skuylands.world.gen.WorldGenOres;
 import com.purble.skuylands.world.gen.WorldGenCustomStructures;
 import com.purble.skuylands.world.gen.WorldGenCustomStructuresSKLH;
-import com.purble.skuylands.world.gen.WorldGenOres;
 
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -30,7 +30,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;//Make it so you can tp to "2500 (a safe y cord) 0" (The SkuyLands Home Town)
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @EventBusSubscriber
 public class RegistryHandler {
@@ -47,7 +47,7 @@ public class RegistryHandler {
 	
 	@SubscribeEvent
 	@SideOnly(Side.CLIENT)
-	public static void onModelRegiser(ModelRegistryEvent event) {
+	public static void onModelRegister(ModelRegistryEvent event) {
 		RenderHandler.registerEntityRenders();
 		//SkuyLands.proxy.registerItemRenderer(Item.getItemFromBlock(BlockInit.LEAED_TABLE), 0, "inventory");
 		for(Item item : ItemInit.ITEMS) {
@@ -84,7 +84,6 @@ public class RegistryHandler {
 		BiomeInit.registerBiomes();
 		SkuyLands.proxy.render();
 		EnumHelper.addArt("StaffVSSidool", "StaffVSSidool", 16 * 2, 16 * 2, 0, 160);
-		EnumHelper.addArt("SkuyLandsHomeFarIslands", "SkuyLandsHomeFarIslands", 16 * 3, 16 * 3, 64, 80);
 	}
 	
 	public static void postInit() {

@@ -1,0 +1,6 @@
+{
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "skuylands:items/powered_lea_staff"
+	}
+}

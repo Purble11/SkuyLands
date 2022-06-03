@@ -129,6 +129,20 @@
 					"name": "minecraft:air"
 				}
 			]
+		},
+		{
+			"name": "leaed_charge_matter",
+			"rolls": {
+				"min": 0,
+				"max": 1
+			},
+			"entries": [
+				{
+					"type": "item",
+					"weight": 1,
+					"name": "skuylands:leaed_charge_matter"
+				}
+			]
 		}
 	]
 }

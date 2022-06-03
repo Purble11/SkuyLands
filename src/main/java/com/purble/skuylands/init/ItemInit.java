@@ -11,6 +11,8 @@ import com.purble.skuylands.items.LEAOP_INGOT;
 import com.purble.skuylands.items.LEAOP_SIDOOL;
 import com.purble.skuylands.items.LEAOP_SOUL_STAFF;
 import com.purble.skuylands.items.LEA_BOAT;
+import com.purble.skuylands.items.POWERED_LEAOP_SHARD;
+import com.purble.skuylands.items.POWERED_LEA_STAFF;
 import com.purble.skuylands.items.UNKNOWN_LEAOP_KEY;
 import com.purble.skuylands.items.tools.LEAOP_AXE;
 import com.purble.skuylands.items.tools.LEAOP_BOW;
@@ -37,11 +39,14 @@ public class ItemInit {
 	public static final ToolMaterial TOOL_SIDOOL = EnumHelper.addToolMaterial("TOOL_SIDOOL".toLowerCase(), 73, 7500, 78.9F, 1, 70);
 	
 	public static final Item LEAOP_INGOT = new LEAOP_INGOT("LEAOP_INGOT".toLowerCase());
+	public static final Item LEAED_CHARGE_MATTER = new com.purble.skuylands.items.LEAED_CHARGE_MATTER("LEAED_CHARGE_MATTER".toLowerCase());
 	public static final Item UNKNOWN_LEAOP_KEY = new UNKNOWN_LEAOP_KEY("UNKNOWN_LEAOP_KEY".toLowerCase());
 	public static final Item LEAOPED_SPARKS = new LEAOPED_SPARKS("LEAOPED_SPARKS".toLowerCase());
 	public static final Item LEA_BOAT = new LEA_BOAT("LEA_BOAT".toLowerCase());
+	public static final Item POWERED_LEAOP_SHARD = new POWERED_LEAOP_SHARD("POWERED_LEAOP_SHARD".toLowerCase());
 	
 	public static final Item LEAOP_SOUL_STAFF = new LEAOP_SOUL_STAFF("LEAOP_SOUL_STAFF".toLowerCase());
+	public static final Item POWERED_LEA_STAFF = new POWERED_LEA_STAFF("POWERED_LEA_STAFF".toLowerCase());
 	public static final Item LEAOP_SIDOOL = new LEAOP_SIDOOL("LEAOP_SIDOOL".toLowerCase(), TOOL_SIDOOL);
 	
 	public static final Item LEAOPED_APPLE = new LEAOPED_APPLE("LEAOPED_APPLE".toLowerCase(), 20, 15.5F, false);

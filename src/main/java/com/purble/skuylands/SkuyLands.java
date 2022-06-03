@@ -13,11 +13,13 @@ import com.purble.skuylands.util.handlers.DimTeleporter;
 import com.purble.skuylands.util.handlers.RegistryHandler;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.Mod;
@@ -75,29 +77,50 @@ public class SkuyLands {
 			deathMessage.add("'s damage was too little for");
 			deathMessage.add(" got squished like an bug by");
 			deathMessage.add(" was sent to the sky by");
+			deathMessage.add(" was turned into dust by");
+			deathMessage.add(" was spammed with hits to death by");
 			
 			inv.dropAllItems();
 			inv.clear();
-			DimTeleporter.teleportToDimension(player, 0, 0, 0, 0);
-			try {
-				((EntityPlayerMP)player).connection.setPlayerLocation((double) player.getBedLocation().getX() + 0.5F, player.getBedLocation().getY(), (double) player.getBedLocation().getZ() + 0.5F, 1.0F, 1.0F);
-			} catch (NullPointerException e) {
-				((EntityPlayerMP)player).connection.setPlayerLocation((double) player.world.getSpawnPoint().getX() + 0.5F, player.world.getSpawnPoint().getY(), (double) player.world.getSpawnPoint().getZ() + 0.5F, 1.0F, 1.0F);
+			if(player.dimension != 0) {
+				try {
+					DimTeleporter.teleportToDimension(player, 0, player.getBedLocation().getX() + 0.5F, player.getBedLocation().getY(), (double) player.getBedLocation().getZ() + 0.5F);
+				} catch (NullPointerException e) {
+					DimTeleporter.teleportToDimension(player, 0, player.world.getSpawnPoint().getX() + 0.5F, calculatePosHeight(player.world, player.world.getSpawnPoint().getX(), player.world.getSpawnPoint().getZ()), (double) player.world.getSpawnPoint().getZ() + 0.5F);
+				}
+			} else {
+				try {
+					player.setPositionAndUpdate(player.getBedLocation().getX() + 0.5F, player.getBedLocation().getY(), (double) player.getBedLocation().getZ() + 0.5F);
+				} catch (NullPointerException e) {
+					player.setPositionAndUpdate(player.world.getSpawnPoint().getX() + 0.5F, calculatePosHeight(player.world, player.world.getSpawnPoint().getX(), player.world.getSpawnPoint().getZ()), (double) player.world.getSpawnPoint().getZ() + 0.5F);
+				}
 			}
 		/*	player.setPosition((double) player.world.provider.getSpawnPoint().getX() + 0.5F,
 					player.world.provider.getSpawnPoint().getY(), 
 					(double) player.world.provider.getSpawnPoint().getZ() + 0.5F);*/
-			try {
-				player.getServer().getPlayerList().sendMessage(new TextComponentString(player.getDisplayNameString() + deathMessage.get(new Random().nextInt(deathMessage.size())) + " " + playerKillerName));
-			} catch (NullPointerException e) {
+			//try {
+			Minecraft.getMinecraft().getIntegratedServer().getPlayerList().sendMessage(new TextComponentString(player.getDisplayNameString() + deathMessage.get(new Random().nextInt(deathMessage.size())) + " " + playerKillerName));
+			/*} catch (NullPointerException e) {
 				player.sendMessage(new TextComponentString(player.getDisplayNameString() + deathMessage.get(new Random().nextInt(deathMessage.size())) + " " + playerKillerName));
-			}
+			}*/
 			player.setHealth(-69420.0F);
 		}
 	}
 	
-	public static void killEntity(EntityLivingBase entity) {
-		entity.setHealth(-69420.0F);
+	private static int calculatePosHeight(World world, int x, int z) {
+		int y = world.getHeight();
+		boolean foundGround = false;
+		
+		while(!foundGround && y-- >= 0) {
+			Block block = world.getBlockState(new BlockPos(x, y, z)).getBlock();
+			foundGround = block != Blocks.AIR;
+		}
+		
+		return y;
+	}
+	
+	public static void killEntity(EntityLivingBase entityIn) {
+		entityIn.onKillCommand();
 	} 
 	
 	public static void changeDimToSkuyLandsHome(EntityPlayer player) {

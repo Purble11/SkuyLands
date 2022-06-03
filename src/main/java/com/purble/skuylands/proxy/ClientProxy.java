@@ -1,5 +1,6 @@
 package com.purble.skuylands.proxy;
 
+import com.purble.skuylands.entity.EntityCustomKillProjectile;
 import com.purble.skuylands.entity.EntityLeaopedOrbProjectile;
 import com.purble.skuylands.entity.leaoplordminionarrow.EntityLeaopLordMinionProjectile;
 import com.purble.skuylands.init.ItemInit;
@@ -17,9 +18,11 @@ public class ClientProxy extends CommonProxy {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName(), id));
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public void render() {
 		RenderingRegistry.registerEntityRenderingHandler(EntityLeaopLordMinionProjectile.class, new RenderSnowball<EntityLeaopLordMinionProjectile>(Minecraft.getMinecraft().getRenderManager(), ItemInit.LEAOP_INGOT, Minecraft.getMinecraft().getRenderItem()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityLeaopedOrbProjectile.class, new RenderSnowball<EntityLeaopedOrbProjectile>(Minecraft.getMinecraft().getRenderManager(), ItemInit.LEAOPED_ORB, Minecraft.getMinecraft().getRenderItem()));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCustomKillProjectile.class, new RenderSnowball<EntityCustomKillProjectile>(Minecraft.getMinecraft().getRenderManager(), ItemInit.POWERED_LEAOP_SHARD, Minecraft.getMinecraft().getRenderItem()));
 	}
 }
