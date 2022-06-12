@@ -84,6 +84,10 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 			this.addSlotToContainer(new Slot(player.inventory, si, 40 + 8 + si * 18, (30 + 142) + 10));
 	}
 
+	public GuiLeaedTable(Object world2, Object object, Object object2, Object object3, Object player2) {
+		// Test constructor
+	}
+
 	public Map<Integer, Slot> get() {
 		return customSlots;
 	}
@@ -233,30 +237,31 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 			
 			this.customSlots.forEach((slotNum, slot) -> {
 				if(slotNum == 36) {
-					slot.putStack(getRecipeItem());
+					slot.putStack(getRecipeItem(this.customSlots));
 					this.detectAndSendChanges();
-					((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, getRecipeItem()));
+					((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, getRecipeItem(this.customSlots)));
 				}
 			});
 		}
 	}
 	
-	private ItemStack getRecipeItem() {
+	public ItemStack getRecipeItem(Map<Integer, Slot> customSlots) {
 		Map<Integer, Item> slots = new HashMap<>();
-		this.customSlots.forEach((idk, slot) -> {
+		customSlots.forEach((idk, slot) -> {
 			slots.put(slot.getSlotIndex(), slot.getStack().getItem());
 		});
 		
 		if(isChestRecipe(slots)) return new ItemStack(BlockInit.LEA_CHEST, 3);
 		if(isStaff(slots)) return new ItemStack(ItemInit.POWERED_LEA_STAFF);
 		if(isShard(slots)) return new ItemStack(ItemInit.POWERED_LEAOP_SHARD, 2);
+		if(isSword(slots)) return new ItemStack(ItemInit.POWERED_LEA_SWORD);
 		return ItemStack.EMPTY;
 	}
 	
 	private boolean isChestRecipe(Map<Integer, Item> items) {
 		Item firstItem = Item.getItemFromBlock(BlockInit.LEAOP_BLOCK);
 		Item secondItem = Item.getItemFromBlock(Blocks.CHEST);
-		if(items.get(0) == firstItem && items.get(1) == firstItem 
+		return items.get(0) == firstItem && items.get(1) == firstItem 
 				&& items.get(2) == firstItem && items.get(3) == firstItem 
 				&& items.get(4) == firstItem && items.get(5) == firstItem 
 				&& items.get(6) == firstItem && items.get(7) == firstItem 
@@ -273,15 +278,14 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 				&& items.get(28) == firstItem && items.get(29) == firstItem 
 				&& items.get(30) == firstItem && items.get(31) == firstItem 
 				&& items.get(32) == firstItem && items.get(33) == firstItem 
-				&& items.get(34) == firstItem && items.get(35) == firstItem) return true;
-		return false;
+				&& items.get(34) == firstItem && items.get(35) == firstItem;
 	}
 	
 	private boolean isStaff(Map<Integer, Item> items) {
 		Item firstItem = Items.AIR;
 		Item secondItem = ItemInit.POWERED_LEAOP_SHARD;
 		Item thirdItem = Items.STICK;
-		if(items.get(0) == firstItem && items.get(1) == firstItem 
+		return items.get(0) == firstItem && items.get(1) == firstItem 
 				&& items.get(2) == secondItem && items.get(3) == secondItem 
 				&& items.get(4) == firstItem && items.get(5) == firstItem 
 				&& items.get(6) == firstItem && items.get(7) == secondItem 
@@ -298,16 +302,13 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 				&& items.get(28) == firstItem && items.get(29) == firstItem 
 				&& items.get(30) == firstItem && items.get(31) == firstItem 
 				&& items.get(32) == firstItem && items.get(33) == thirdItem 
-				&& items.get(34) == firstItem && items.get(35) == firstItem) return true;
-		return false;
+				&& items.get(34) == firstItem && items.get(35) == firstItem;
 	}
-	
-
 	
 	private boolean isShard(Map<Integer, Item> items) {
 		Item firstItem = ItemInit.LEAED_CHARGE_MATTER;
 		Item secondItem = ItemInit.LEAOP_INGOT;
-		if(items.get(0) == firstItem && items.get(1) == firstItem 
+		return items.get(0) == firstItem && items.get(1) == firstItem 
 				&& items.get(2) == firstItem && items.get(3) == firstItem 
 				&& items.get(4) == firstItem && items.get(5) == firstItem 
 				&& items.get(6) == firstItem && items.get(7) == secondItem 
@@ -324,8 +325,32 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 				&& items.get(28) == secondItem && items.get(29) == firstItem 
 				&& items.get(30) == firstItem && items.get(31) == firstItem 
 				&& items.get(32) == firstItem && items.get(33) == firstItem 
-				&& items.get(34) == firstItem && items.get(35) == firstItem) return true;
-		return false;
+				&& items.get(34) == firstItem && items.get(35) == firstItem;
+	}
+	
+	private boolean isSword(Map<Integer, Item> items) {
+		Item firstItem = Items.AIR;
+		Item secondItem = ItemInit.POWERED_LEAOP_SHARD;
+		Item thirdItem = Items.STICK;
+		Item fourthItem = ItemInit.POWERED_LEAOPED_BOMB;
+		return items.get(0) == fourthItem && items.get(1) == firstItem 
+				&& items.get(2) == firstItem && items.get(3) == firstItem 
+				&& items.get(4) == firstItem && items.get(5) == firstItem 
+				&& items.get(6) == firstItem && items.get(7) == secondItem 
+				&& items.get(8) == firstItem && items.get(9) == firstItem 
+				&& items.get(10) == firstItem && items.get(11) == firstItem 
+				&& items.get(12) == firstItem && items.get(13) == firstItem 
+				&& items.get(14) == secondItem && items.get(15) == firstItem 
+				&& items.get(16) == secondItem && items.get(17) == firstItem 
+				&& items.get(18) == firstItem && items.get(19) == firstItem 
+				&& items.get(20) == firstItem && items.get(21) == secondItem 
+				&& items.get(22) == firstItem && items.get(23) == firstItem 
+				&& items.get(24) == firstItem && items.get(25) == firstItem 
+				&& items.get(26) == secondItem && items.get(27) == firstItem 
+				&& items.get(28) == thirdItem && items.get(29) == firstItem 
+				&& items.get(30) == firstItem && items.get(31) == firstItem 
+				&& items.get(32) == firstItem && items.get(33) == firstItem 
+				&& items.get(34) == firstItem && items.get(35) == secondItem;
 	}
 	
 }

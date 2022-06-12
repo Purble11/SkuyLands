@@ -1,0 +1,32 @@
+{
+	"parent": "item/generated",
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [ 0, -90, 55 ],
+			"translation": [ 0, 13.0, 1.0 ],
+			"scale": [ 1.7, 1.7, 1.7 ]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [ 0, 90, -55 ],
+			"translation": [ 0, 13.0, 1.0 ],
+			"scale": [ 1.7, 1.7, 1.7 ]
+		},
+		"firstperson_righthand": {
+			"rotation": [ 0, -90, 25 ],
+			"translation": [ 3.26, 10.4, 3.26 ],
+			"scale": [ 1.36, 1.36, 1.36 ]
+		},
+		"firstperson_lefthand": {
+			"rotation": [ 0, 90, -25 ],
+			"translation": [ 3.26, 10.4, 3.26 ],
+			"scale": [ 1.36, 1.36, 1.36 ]
+		},
+		"gui": {
+			"scale": [ 2.0, 2.0, 2.0 ],
+			"translation": [ 9.0, 9.0, 9.0 ]
+		}
+	},
+	"textures": {
+		"layer0": "skuylands:items/powered_lea_sword"
+	}
+}

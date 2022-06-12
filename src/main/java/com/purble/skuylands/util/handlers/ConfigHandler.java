@@ -20,9 +20,13 @@ public class ConfigHandler {
 	public static int ENTITY_LEA_BOAT = 699476601;
 	public static int ENTITY_CUSTOM_KILL_PROJECTILE = 690042116;
 	
+	//Particles
+	public static int PARTICLE_POWERED_RING = 693241110;
+	
 	//Gui's
 	public static int GUI_LEAED_TABLE = 69101875;
 	public static int GUI_LEA_CHEST = 69132415;
+	public static int GUI_LEAED_TABLE_RECIPE_BOOK = 691112248;
 	
 	//Dimensions
 	public static int SKUYLANDS_HOME = 69849356;
@@ -46,11 +50,17 @@ public class ConfigHandler {
 		ENTITY_LEA_BOAT = config.getInt("LeaBoat", category, 699476601, 0, 999999999, "ID for any Lea Boat");
 		ENTITY_CUSTOM_KILL_PROJECTILE = config.getInt("CustomKillProjectile", category, 690042116, 0, 999999999, "ID for any Custom Kill Projectile");
 		
+		category = "particle-ids";
+		config.addCustomCategoryComment(category, "Change Skuylands's Particle Ids");
+		
+		PARTICLE_POWERED_RING = config.getInt("PoweredRing", category, 693241110, 0, 999999999, "ID for any Powered Ring");
+		
 		category = "gui-ids";
 		config.addCustomCategoryComment(category, "Change Skuylands's Gui Ids");
 
 		GUI_LEAED_TABLE = config.getInt("LeaedTableGui", category, 69101875, 0, 999999999, "ID for any Leaed Table Gui");
 		GUI_LEA_CHEST = config.getInt("LeaChestGui", category, 69132415, 0, 999999999, "ID for any Lea Chest Gui");
+		GUI_LEAED_TABLE_RECIPE_BOOK = config.getInt("LeaedTableRecipeBookGui", category, 691112248, 0, 999999999, "ID for any Leaed Table Recipe Book Gui");
 		
 		category = "dimension-ids";
 		config.addCustomCategoryComment(category, "Change Skuyland's Dimension Ids");

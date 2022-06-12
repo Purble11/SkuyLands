@@ -4,6 +4,8 @@ import com.purble.skuylands.blocks.lea_chest.GuiLeaChest;
 import com.purble.skuylands.blocks.lea_chest.GuiWindowLeaChest;
 import com.purble.skuylands.blocks.leaed_table.GuiLeaedTable;
 import com.purble.skuylands.blocks.leaed_table.GuiWindowLeaedTable;
+import com.purble.skuylands.items.leaed_table_recipe_book_stuff.GuiLeaedTableRecipeBook;
+import com.purble.skuylands.items.leaed_table_recipe_book_stuff.GuiWindowLeaedTableRecipeBook;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -19,6 +21,9 @@ public class GuiHandler implements IGuiHandler {
 		if(ID == ConfigHandler.GUI_LEA_CHEST) {
 			return new GuiLeaChest(world, x, y, z, player);
 		}
+		if(ID == ConfigHandler.GUI_LEAED_TABLE_RECIPE_BOOK) {
+			return new GuiLeaedTableRecipeBook(world, x, y, z, player);
+		}
 		return null;
 	}
 
@@ -29,6 +34,9 @@ public class GuiHandler implements IGuiHandler {
 		}
 		if(ID == ConfigHandler.GUI_LEA_CHEST) {
 			return new GuiWindowLeaChest(world, x, y, z, player);
+		}
+		if(ID == ConfigHandler.GUI_LEAED_TABLE_RECIPE_BOOK) {
+			return new GuiWindowLeaedTableRecipeBook(world, x, y, z, player);
 		}
 		return null;
 	}

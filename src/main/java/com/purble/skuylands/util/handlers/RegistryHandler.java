@@ -10,6 +10,7 @@ import com.purble.skuylands.init.EnchantmentInit;
 import com.purble.skuylands.init.EntityInit;
 import com.purble.skuylands.init.ItemInit;
 import com.purble.skuylands.init.PotionInit;
+import com.purble.skuylands.particles.PoweredRingParticle;
 import com.purble.skuylands.recipes.SmeltingRecipes;
 import com.purble.skuylands.util.Referance;
 import com.purble.skuylands.world.gen.WorldGenOres;
@@ -17,6 +18,7 @@ import com.purble.skuylands.world.gen.WorldGenCustomStructures;
 import com.purble.skuylands.world.gen.WorldGenCustomStructuresSKLH;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
@@ -83,7 +85,17 @@ public class RegistryHandler {
 		GameRegistry.registerTileEntity(TileEntityLeaChest.class, new ResourceLocation(Referance.MOD_ID, "tile_lea_chest"));
 		BiomeInit.registerBiomes();
 		SkuyLands.proxy.render();
+		try {
+			particleInit();
+		} catch (NoSuchMethodError e) {
+			System.out.println("Cannot Register Particles.");
+		}
 		EnumHelper.addArt("StaffVSSidool", "StaffVSSidool", 16 * 2, 16 * 2, 0, 160);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public static void particleInit() {
+		Minecraft.getMinecraft().effectRenderer.registerParticle(ConfigHandler.PARTICLE_POWERED_RING, new PoweredRingParticle.Factory());
 	}
 	
 	public static void postInit() {

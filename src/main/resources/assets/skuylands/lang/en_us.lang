@@ -7,6 +7,8 @@ item.leaoped_sparks.name=Leaoped Sparks
 item.lea_boat.name=Lea Boat
 item.powered_leaop_shard.name=Powered Leaop Shard
 item.leaed_charge_matter.name=Leaed Charge Matter
+item.powered_leaoped_bomb.name=Powered LEaoped Bomb
+item.leaed_table_recipe_book.name=Leaed Table Recipe BOok
 
 //Foods
 item.leaoped_apple.name=Leaoped Apple
@@ -24,6 +26,7 @@ item.leaop_axe.name=Leaop Axe
 item.leaop_shovel.name=Leaop Shovel
 item.leaop_hoe.name=Leaop HOe
 item.leaop_sidool.name=Leaop Sidool
+item.powered_lea_sword.name=Powered Lea Sword
 
 //Staffs
 item.leaop_soul_staff.name=Leaop Soul Staff
@@ -75,18 +78,23 @@ tile.lea_fence_gate.name=Lea Fence Gate
 
 //Potions Effects
 effect.leaoped_potion=Leaoped Potion
+effect.powered_thrown_away=Powered Thrown Away
 
 //Potions
 potion.effect.leaoped_potion=Potion of Leaoped
+potion.effect.powered_thrown_away=Potion of Powered Thrown Away
 
 //Splash Potions
 splash_potion.effect.leaoped_potion=Splash Potion of Leaoped
+splash_potion.effect.powered_thrown_away=Splash Potion of Powered Thrown Away
 
 //Lingering Potions
 lingering_potion.effect.leaoped_potion=Lingering Potion of Leaoped
+lingering_potion.effect.powered_thrown_away=Lingering Potion of Powered Thrown Away
 
 //Potions Tipped Arrow
 tipped_arrow.effect.leaoped_potion=Arrow of Leaoped
+tipped_arrow.effect.powered_thrown_away=Arrow of Powered Thrown Away
 
 //Advancements
 advancements.skuylands.visit_skuylands.title=Skuy Lands

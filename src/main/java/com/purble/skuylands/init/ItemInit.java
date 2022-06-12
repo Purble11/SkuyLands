@@ -3,6 +3,7 @@ package com.purble.skuylands.init;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.purble.skuylands.items.LEAED_TABLE_RECIPE_BOOK;
 import com.purble.skuylands.items.LEAOPED_APPLE;
 import com.purble.skuylands.items.LEAOPED_SPARKS;
 import com.purble.skuylands.items.LEAOP_ARMOR;
@@ -11,8 +12,10 @@ import com.purble.skuylands.items.LEAOP_INGOT;
 import com.purble.skuylands.items.LEAOP_SIDOOL;
 import com.purble.skuylands.items.LEAOP_SOUL_STAFF;
 import com.purble.skuylands.items.LEA_BOAT;
+import com.purble.skuylands.items.POWERED_LEAOPED_BOMB;
 import com.purble.skuylands.items.POWERED_LEAOP_SHARD;
 import com.purble.skuylands.items.POWERED_LEA_STAFF;
+import com.purble.skuylands.items.POWERED_LEA_SWORD;
 import com.purble.skuylands.items.UNKNOWN_LEAOP_KEY;
 import com.purble.skuylands.items.tools.LEAOP_AXE;
 import com.purble.skuylands.items.tools.LEAOP_BOW;
@@ -37,6 +40,7 @@ public class ItemInit {
 	public static final ArmorMaterial ARMOR_LEOP = EnumHelper.addArmorMaterial("ARMOR_LEOP".toLowerCase(), Referance.MOD_ID + ":leaop", 6000, new int[] {3, 6, 7, 4}, 100, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 0.0F);
 	public static final ToolMaterial TOOL_LEAOP = EnumHelper.addToolMaterial("TOOL_LEAOP".toLowerCase(), 30, 6000, 38.5F, 1, 100);
 	public static final ToolMaterial TOOL_SIDOOL = EnumHelper.addToolMaterial("TOOL_SIDOOL".toLowerCase(), 73, 7500, 78.9F, 1, 70);
+	public static final ToolMaterial TOOL_POWERED = EnumHelper.addToolMaterial("TOOL_POWERED".toLowerCase(), 694, 69420, 6942, (int)Double.POSITIVE_INFINITY, 0);
 	
 	public static final Item LEAOP_INGOT = new LEAOP_INGOT("LEAOP_INGOT".toLowerCase());
 	public static final Item LEAED_CHARGE_MATTER = new com.purble.skuylands.items.LEAED_CHARGE_MATTER("LEAED_CHARGE_MATTER".toLowerCase());
@@ -44,6 +48,8 @@ public class ItemInit {
 	public static final Item LEAOPED_SPARKS = new LEAOPED_SPARKS("LEAOPED_SPARKS".toLowerCase());
 	public static final Item LEA_BOAT = new LEA_BOAT("LEA_BOAT".toLowerCase());
 	public static final Item POWERED_LEAOP_SHARD = new POWERED_LEAOP_SHARD("POWERED_LEAOP_SHARD".toLowerCase());
+	public static final Item POWERED_LEAOPED_BOMB = new POWERED_LEAOPED_BOMB("POWERED_LEAOPED_BOMB".toLowerCase());
+	public static final Item LEAED_TABLE_RECIPE_BOOK = new LEAED_TABLE_RECIPE_BOOK("LEAED_TABLE_RECIPE_BOOK".toLowerCase());
 	
 	public static final Item LEAOP_SOUL_STAFF = new LEAOP_SOUL_STAFF("LEAOP_SOUL_STAFF".toLowerCase());
 	public static final Item POWERED_LEA_STAFF = new POWERED_LEA_STAFF("POWERED_LEA_STAFF".toLowerCase());
@@ -61,6 +67,7 @@ public class ItemInit {
 	public static final Item LEAOP_AXE = new LEAOP_AXE("LEAOP_AXE".toLowerCase(), TOOL_LEAOP);
 	public static final Item LEAOP_SHOVEL = new LEAOP_SHOVEL("LEAOP_SHOVEL".toLowerCase(), TOOL_LEAOP);
 	public static final Item LEAOP_HOE = new LEAOP_HOE("LEAOP_HOE".toLowerCase(), TOOL_LEAOP);
+	public static final Item POWERED_LEA_SWORD = new POWERED_LEA_SWORD("POWERED_LEA_SWORD".toLowerCase(), TOOL_POWERED);
 	
 	public static final Item LEAOP_BOW = new LEAOP_BOW("LEAOP_BOW".toLowerCase());
 	public static final Item LEAOP_ARROW = new LEAOP_ARROW("LEAOP_ARROW".toLowerCase());

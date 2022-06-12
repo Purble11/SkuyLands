@@ -1,0 +1,22 @@
+{
+	"type": "minecraft:crafting_shaped",
+	
+	"pattern": [
+		"III",
+		"IBI",
+		"III"
+	],
+	
+	"key": {
+		"I": {
+			"item": "skuylands:leaop_ingot"
+		},
+		"B": {
+			"item": "minecraft:book"
+		}
+	},
+	
+	"result": {
+		"item": "skuylands:leaed_table_recipe_book"
+	}
+}
