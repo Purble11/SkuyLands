@@ -3,6 +3,7 @@ package com.purble.skuylands.items.leaed_table_recipe_book_stuff;
 import java.io.IOException;
 import java.util.Map;
 
+import com.purble.skuylands.other.LeaedTableRecipes;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
@@ -23,6 +24,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class GuiWindowLeaedTableRecipeBook extends GuiContainer {
+
+	LeaedTableRecipes leaedTable = new LeaedTableRecipes();
+	int recipNum = 0;
 
 	public GuiWindowLeaedTableRecipeBook(World world, int x, int y, int z, EntityPlayer entity) {
 		super(new GuiLeaedTableRecipeBook(world, x, y, z, entity));
@@ -75,6 +79,7 @@ public class GuiWindowLeaedTableRecipeBook extends GuiContainer {
 
 	@Override
 	public void initGui() {
+		recipNum = 0;
 		super.initGui();
 		this.guiLeft = (this.width - 229) / 2;
 		this.guiTop = (this.height - 111) / 2;
@@ -87,8 +92,10 @@ public class GuiWindowLeaedTableRecipeBook extends GuiContainer {
 	@Override
 	protected void actionPerformed(GuiButton button) {
 		Map<Integer, Slot> invSlots = ((GuiLeaedTableRecipeBook)this.inventorySlots).get();
+
 		if(button.id == 0) {
-			if(invSlots.get(36).getStack().getItem() == Item.getItemFromBlock(BlockInit.LEA_CHEST)) {
+			recipNum += 1;
+			/*if(invSlots.get(36).getStack().getItem() == Item.getItemFromBlock(BlockInit.LEA_CHEST)) {
 				ItemStack matter = new ItemStack(ItemInit.LEAED_CHARGE_MATTER);
 				ItemStack ingot = new ItemStack(ItemInit.LEAOP_INGOT);
 				invSlots.get(0).putStack(matter);
@@ -209,47 +216,16 @@ public class GuiWindowLeaedTableRecipeBook extends GuiContainer {
 				invSlots.get(34).putStack(n);
 				invSlots.get(35).putStack(s);
 			} else if(invSlots.get(36).getStack().getItem() == ItemInit.POWERED_LEA_SWORD) {
-				ItemStack stack1 = new ItemStack(BlockInit.LEAOP_BLOCK);
-				ItemStack stack2 = new ItemStack(Blocks.CHEST);
-				invSlots.get(0).putStack(stack1);
-				invSlots.get(1).putStack(stack1);
-				invSlots.get(2).putStack(stack1);
-				invSlots.get(3).putStack(stack1);
-				invSlots.get(4).putStack(stack1);
-				invSlots.get(5).putStack(stack1);
-				invSlots.get(6).putStack(stack1);
-				invSlots.get(7).putStack(stack1);
-				invSlots.get(8).putStack(stack1);
-				invSlots.get(9).putStack(stack1);
-				invSlots.get(10).putStack(stack1);
-				invSlots.get(11).putStack(stack1);
-				invSlots.get(12).putStack(stack1);
-				invSlots.get(13).putStack(stack1);
-				invSlots.get(14).putStack(stack2);
-				invSlots.get(15).putStack(stack2);
-				invSlots.get(16).putStack(stack1);
-				invSlots.get(17).putStack(stack1);
-				invSlots.get(18).putStack(stack1);
-				invSlots.get(19).putStack(stack1);
-				invSlots.get(20).putStack(stack2);
-				invSlots.get(21).putStack(stack2);
-				invSlots.get(22).putStack(stack1);
-				invSlots.get(23).putStack(stack1);
-				invSlots.get(24).putStack(stack1);
-				invSlots.get(25).putStack(stack1);
-				invSlots.get(26).putStack(stack1);
-				invSlots.get(27).putStack(stack1);
-				invSlots.get(28).putStack(stack1);
-				invSlots.get(29).putStack(stack1);
-				invSlots.get(30).putStack(stack1);
-				invSlots.get(31).putStack(stack1);
-				invSlots.get(32).putStack(stack1);
-				invSlots.get(33).putStack(stack1);
-				invSlots.get(34).putStack(stack1);
-				invSlots.get(35).putStack(stack1);
-			}
+				((GuiLeaedTableRecipeBook) this.inventorySlots).get().forEach((slotNum, slot) -> {
+					if (slotNum == 36)
+						slot.putStack(new ItemStack(leaedTable.getRecipeOutputFromId(0)));
+					else
+						slot.putStack(new ItemStack(leaedTable.getRecipeInputFromId(0).get(slotNum)));
+				});
+			}*/ 
 		} else if(button.id == 1) {
-			if(invSlots.get(36).getStack().getItem() == Item.getItemFromBlock(BlockInit.LEA_CHEST)) {
+			recipNum -= 1;
+			/*if(invSlots.get(36).getStack().getItem() == Item.getItemFromBlock(BlockInit.LEA_CHEST)) {
 				ItemStack n = ItemStack.EMPTY;
 				ItemStack s = new ItemStack(ItemInit.POWERED_LEAOP_SHARD);
 				ItemStack t = new ItemStack(Items.STICK);
@@ -291,45 +267,25 @@ public class GuiWindowLeaedTableRecipeBook extends GuiContainer {
 				invSlots.get(34).putStack(n);
 				invSlots.get(35).putStack(s);
 			} else if(invSlots.get(36).getStack().getItem() == ItemInit.POWERED_LEAOP_SHARD) {
-				ItemStack stack1 = new ItemStack(BlockInit.LEAOP_BLOCK);
-				ItemStack stack2 = new ItemStack(Blocks.CHEST);
-				invSlots.get(0).putStack(stack1);
-				invSlots.get(1).putStack(stack1);
-				invSlots.get(2).putStack(stack1);
-				invSlots.get(3).putStack(stack1);
-				invSlots.get(4).putStack(stack1);
-				invSlots.get(5).putStack(stack1);
-				invSlots.get(6).putStack(stack1);
-				invSlots.get(7).putStack(stack1);
-				invSlots.get(8).putStack(stack1);
-				invSlots.get(9).putStack(stack1);
-				invSlots.get(10).putStack(stack1);
-				invSlots.get(11).putStack(stack1);
-				invSlots.get(12).putStack(stack1);
-				invSlots.get(13).putStack(stack1);
-				invSlots.get(14).putStack(stack2);
-				invSlots.get(15).putStack(stack2);
-				invSlots.get(16).putStack(stack1);
-				invSlots.get(17).putStack(stack1);
-				invSlots.get(18).putStack(stack1);
-				invSlots.get(19).putStack(stack1);
-				invSlots.get(20).putStack(stack2);
-				invSlots.get(21).putStack(stack2);
-				invSlots.get(22).putStack(stack1);
-				invSlots.get(23).putStack(stack1);
-				invSlots.get(24).putStack(stack1);
-				invSlots.get(25).putStack(stack1);
-				invSlots.get(26).putStack(stack1);
-				invSlots.get(27).putStack(stack1);
-				invSlots.get(28).putStack(stack1);
-				invSlots.get(29).putStack(stack1);
-				invSlots.get(30).putStack(stack1);
-				invSlots.get(31).putStack(stack1);
-				invSlots.get(32).putStack(stack1);
-				invSlots.get(33).putStack(stack1);
-				invSlots.get(34).putStack(stack1);
-				invSlots.get(35).putStack(stack1);
-			} else if(invSlots.get(36).getStack().getItem() == ItemInit.POWERED_LEA_STAFF) {
+				((GuiLeaedTableRecipeBook) this.inventorySlots).get().forEach((slotNum, slot) -> {
+					if (slotNum == 36)
+						slot.putStack(new ItemStack(leaedTable.getRecipeOutputFromId(leaedTable.maxRecipeId)));
+					else
+						slot.putStack(new ItemStack(leaedTable.getRecipeInputFromId(leaedTable.maxRecipeId).get(slotNum)));
+				});
+			} leaedTable.getRecipes().forEach((input, output) -> {
+				if(0 <= leaedTable.recipeID) {
+					((GuiLeaedTableRecipeBook) this.inventorySlots).get().forEach((slotNum, slot) -> {
+						if (slotNum == 36)
+							slot.putStack(new ItemStack(leaedTable.getRecipeOutputFromId(leaedTable.recipeID)));
+						else
+							slot.putStack(new ItemStack(leaedTable.getRecipeInputFromId(leaedTable.recipeID).get(slotNum)));
+					});
+					leaedTable.recipeID -= 1;
+					return;
+				}
+			});
+			if(invSlots.get(36).getStack().getItem() == ItemInit.POWERED_LEA_STAFF) {
 				ItemStack matter = new ItemStack(ItemInit.LEAED_CHARGE_MATTER);
 				ItemStack ingot = new ItemStack(ItemInit.LEAOP_INGOT);
 				invSlots.get(0).putStack(matter);
@@ -408,9 +364,28 @@ public class GuiWindowLeaedTableRecipeBook extends GuiContainer {
 				invSlots.get(33).putStack(t);
 				invSlots.get(34).putStack(n);
 				invSlots.get(35).putStack(n);
-			}
+			}*/
 		}
-		invSlots.get(36).putStack(new GuiLeaedTable(null, null, null, null, null).getRecipeItem(invSlots));
+
+		if(recipNum > leaedTable.maxRecipeId) {
+			recipNum = 0;
+		}
+		
+		if(recipNum < 0) {
+			recipNum = leaedTable.maxRecipeId;
+		}
+		
+		leaedTable.getRecipes().forEach((input, output) -> {
+			((GuiLeaedTableRecipeBook) this.inventorySlots).get().forEach((slotNum, slot) -> {
+				if (slotNum == 36) {
+					slot.putStack(leaedTable.getRecipeOutputFromId(recipNum));
+				} else
+					slot.putStack(new ItemStack(leaedTable.getRecipeInputFromId(recipNum).get(slotNum)));
+			});
+			return;
+		});
+		
+		System.out.println(recipNum);
 	}
 
 	@Override

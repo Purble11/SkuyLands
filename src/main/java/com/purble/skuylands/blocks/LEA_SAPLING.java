@@ -47,7 +47,7 @@ public class LEA_SAPLING extends Block {
 		
 		if(worldIn.getBlockState(pos.down()).getBlock() == BlockInit.LEAED_VOID) {
 			if(RANDOM.nextInt(50) <= 12) {
-				WorldGenCustomStructures.TREE.generate(worldIn, RANDOM, pos.add(-2, 0, -2));
+				WorldGenCustomStructures.TREE.generate(worldIn, RANDOM, pos.add(0, 0, 0));
 			}
 		} else {
 			worldIn.destroyBlock(pos, true);
@@ -100,7 +100,7 @@ public class LEA_SAPLING extends Block {
 			playerIn.playSound(SoundEvents.ITEM_HOE_TILL, 1.0f, 1.0f);
 			
 			if(RANDOM.nextInt(100) <= 12) {
-				WorldGenCustomStructures.TREE.generate(worldIn, RANDOM, pos.add(-2, 0, -2));
+				WorldGenCustomStructures.TREE.generate(worldIn, RANDOM, pos.add(0, 0, 0));
 			}
 			
 			return true;

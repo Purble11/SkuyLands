@@ -27,6 +27,9 @@ item.leaop_shovel.name=Leaop Shovel
 item.leaop_hoe.name=Leaop HOe
 item.leaop_sidool.name=Leaop Sidool
 item.powered_lea_sword.name=Powered Lea Sword
+item.powered_lea_duel_sword_handle.name=Powered Lea Duel Sword
+item.powered_lea_duel_sword.name=Powered Lea Duel Sword
+item.powered_lea_duel_sword_throwen.name=Powered Lea Duel Sword
 
 //Staffs
 item.leaop_soul_staff.name=Leaop Soul Staff

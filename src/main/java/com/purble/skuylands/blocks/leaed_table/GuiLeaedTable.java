@@ -7,6 +7,7 @@ import com.google.common.base.Supplier;
 import com.purble.skuylands.init.BlockInit;
 import com.purble.skuylands.init.ItemInit;
 
+import com.purble.skuylands.other.LeaedTableRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
@@ -237,9 +238,44 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 			
 			this.customSlots.forEach((slotNum, slot) -> {
 				if(slotNum == 36) {
-					slot.putStack(getRecipeItem(this.customSlots));
-					this.detectAndSendChanges();
-					((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, getRecipeItem(this.customSlots)));
+					//slot.putStack(getRecipeItem(this.customSlots));
+					LeaedTableRecipes recipes = new LeaedTableRecipes();
+					for (Map.Entry<Map<Integer, Item>, ItemStack> entry : recipes.getRecipes().entrySet()) {
+						Map<Integer, Item> input = entry.getKey();
+					    ItemStack output = entry.getValue();
+						if(this.get().get(0).getStack().getItem() == input.get(0) && this.get().get(1).getStack().getItem() == input.get(1)
+								&& this.get().get(2).getStack().getItem() == input.get(2) && this.get().get(3).getStack().getItem() == input.get(3)
+								&& this.get().get(4).getStack().getItem() == input.get(4) && this.get().get(5).getStack().getItem() == input.get(5)
+								&& this.get().get(6).getStack().getItem() == input.get(6) && this.get().get(7).getStack().getItem() == input.get(7)
+								&& this.get().get(8).getStack().getItem() == input.get(8) && this.get().get(9).getStack().getItem() == input.get(9)
+								&& this.get().get(10).getStack().getItem() == input.get(10) && this.get().get(11).getStack().getItem() == input.get(11)
+								&& this.get().get(12).getStack().getItem() == input.get(12) && this.get().get(13).getStack().getItem() == input.get(13)
+								&& this.get().get(14).getStack().getItem() == input.get(14) && this.get().get(15).getStack().getItem() == input.get(15)
+								&& this.get().get(16).getStack().getItem() == input.get(16) && this.get().get(17).getStack().getItem() == input.get(17)
+								&& this.get().get(18).getStack().getItem() == input.get(18) && this.get().get(19).getStack().getItem() == input.get(19)
+								&& this.get().get(20).getStack().getItem() == input.get(20) && this.get().get(21).getStack().getItem() == input.get(21)
+								&& this.get().get(22).getStack().getItem() == input.get(22) && this.get().get(23).getStack().getItem() == input.get(23)
+								&& this.get().get(24).getStack().getItem() == input.get(24) && this.get().get(25).getStack().getItem() == input.get(25)
+								&& this.get().get(26).getStack().getItem() == input.get(26) && this.get().get(27).getStack().getItem() == input.get(27)
+								&& this.get().get(28).getStack().getItem() == input.get(28) && this.get().get(29).getStack().getItem() == input.get(29)
+								&& this.get().get(30).getStack().getItem() == input.get(30) && this.get().get(31).getStack().getItem() == input.get(31)
+								&& this.get().get(32).getStack().getItem() == input.get(32) && this.get().get(33).getStack().getItem() == input.get(33)
+								&& this.get().get(34).getStack().getItem() == input.get(34) && this.get().get(35).getStack().getItem() == input.get(35)) {
+							//this.get().get(36).putStack(new ItemStack(output));
+							//System.out.println(output);
+							//slot.putStack(output);
+							//this.detectAndSendChanges();
+							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+							slot.putStack(output);
+							this.detectAndSendChanges();
+						} else {
+							//slot.putStack(ItemStack.EMPTY);
+							//this.detectAndSendChanges();
+							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, ItemStack.EMPTY));
+						}
+					}
+					//this.detectAndSendChanges();
+					//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, getRecipeItem(this.customSlots)));
 				}
 			});
 		}

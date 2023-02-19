@@ -19,6 +19,9 @@ import com.purble.skuylands.items.POWERED_LEA_SWORD;
 import com.purble.skuylands.items.UNKNOWN_LEAOP_KEY;
 import com.purble.skuylands.items.tools.LEAOP_AXE;
 import com.purble.skuylands.items.tools.LEAOP_BOW;
+import com.purble.skuylands.items.tools.POWERED_LEA_DUEL_SWORD_THROWEN;
+import com.purble.skuylands.items.tools.POWERED_LEA_DUEL_SWORD;
+import com.purble.skuylands.items.tools.POWERED_LEA_DUEL_SWORD_HANDLE;
 import com.purble.skuylands.items.tools.LEAOP_HOE;
 import com.purble.skuylands.items.tools.LEAOP_PICKAXE;
 import com.purble.skuylands.items.tools.LEAOP_SHOVEL;
@@ -68,8 +71,11 @@ public class ItemInit {
 	public static final Item LEAOP_SHOVEL = new LEAOP_SHOVEL("LEAOP_SHOVEL".toLowerCase(), TOOL_LEAOP);
 	public static final Item LEAOP_HOE = new LEAOP_HOE("LEAOP_HOE".toLowerCase(), TOOL_LEAOP);
 	public static final Item POWERED_LEA_SWORD = new POWERED_LEA_SWORD("POWERED_LEA_SWORD".toLowerCase(), TOOL_POWERED);
-	
+
 	public static final Item LEAOP_BOW = new LEAOP_BOW("LEAOP_BOW".toLowerCase());
+	public static final Item POWERED_LEA_DUEL_SWORD = new POWERED_LEA_DUEL_SWORD("POWERED_LEA_DUEL_SWORD".toLowerCase());
+	public static final Item POWERED_LEA_DUEL_SWORD_THROWEN = new POWERED_LEA_DUEL_SWORD_THROWEN("POWERED_LEA_DUEL_SWORD_THROWEN".toLowerCase());
+	public static final Item POWERED_LEA_DUEL_SWORD_HANDLE = new POWERED_LEA_DUEL_SWORD_HANDLE("POWERED_LEA_DUEL_SWORD_HANDLE".toLowerCase());
 	public static final Item LEAOP_ARROW = new LEAOP_ARROW("LEAOP_ARROW".toLowerCase());
 	
 	public static final Item LEAOPED_ORB = new com.purble.skuylands.items.LEAOPED_ORB("LEAOPED_ORB".toLowerCase());

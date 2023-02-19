@@ -31,11 +31,11 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = Referance.MOD_ID, version = Referance.VERSION, name = Referance.NAME, dependencies = SkuyLands.DEPENDENCIES)
+@Mod(modid = Referance.MOD_ID, version = Referance.VERSION, name = Referance.NAME)//, dependencies = SkuyLands.DEPENDENCIES)
 public class SkuyLands {
 	
 	public static File config;
-	protected static final String DEPENDENCIES = "required-after:jei";
+	//protected static final String DEPENDENCIES = "required-after:jei";
 	
 	@Instance
 	public static SkuyLands instance;

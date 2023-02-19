@@ -111,6 +111,10 @@ public class GuiLeaedTableRecipeBook extends Container implements Supplier<Map<I
 		return customSlots;
 	}
 
+	public void set(Map<Integer, Slot> slots) {
+		customSlots = slots;
+	}
+
 	@Override
 	public boolean canInteractWith(EntityPlayer player) {
 		return internal.isUsableByPlayer(player);
