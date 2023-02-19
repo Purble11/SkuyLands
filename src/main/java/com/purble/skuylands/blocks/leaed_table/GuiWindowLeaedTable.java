@@ -26,7 +26,7 @@ public class GuiWindowLeaedTable extends GuiContainer {
 		super.drawScreen(mouseX, mouseY, partialTicks);
 		this.renderHoveredToolTip(mouseX, mouseY);
 	}
-
+	
 	@SuppressWarnings("static-access")
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {

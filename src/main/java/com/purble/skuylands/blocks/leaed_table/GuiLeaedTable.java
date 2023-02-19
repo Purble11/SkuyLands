@@ -265,12 +265,14 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 							//System.out.println(output);
 							//slot.putStack(output);
 							//this.detectAndSendChanges();
-							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
-							slot.putStack(output);
+							//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+							slot.putStack(new ItemStack(output.getItem()));
+							slot.getStack().grow(3);
 							this.detectAndSendChanges();
+							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
 						} else {
-							//slot.putStack(ItemStack.EMPTY);
-							//this.detectAndSendChanges();
+							slot.putStack(ItemStack.EMPTY);
+							this.detectAndSendChanges();
 							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, ItemStack.EMPTY));
 						}
 					}
