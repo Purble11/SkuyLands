@@ -55,6 +55,7 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 					super.onSlotChanged();
 					
 					GuiLeaedTable.this.slotChanged(0, 0, 0, null);
+					detectAndSendChanges();
 				}
 			}));
 			
@@ -266,13 +267,12 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 							//slot.putStack(output);
 							//this.detectAndSendChanges();
 							//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
-							slot.putStack(new ItemStack(output.getItem()));
-							slot.getStack().grow(3);
-							this.detectAndSendChanges();
+							slot.putStack(output.copy());
+							//this.detectAndSendChanges();
 							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
 						} else {
 							slot.putStack(ItemStack.EMPTY);
-							this.detectAndSendChanges();
+							//this.detectAndSendChanges();
 							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, ItemStack.EMPTY));
 						}
 					}
