@@ -17,6 +17,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.SPacketSetSlot;
 import net.minecraft.world.World;
@@ -55,7 +56,6 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 					super.onSlotChanged();
 					
 					GuiLeaedTable.this.slotChanged(0, 0, 0, null);
-					detectAndSendChanges();
 				}
 			}));
 			
@@ -222,6 +222,12 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 			this.clearContainer(playerIn, playerIn.world, internal);
 		}
 	}
+	
+	@Override
+	public void onCraftMatrixChanged(IInventory inventoryIn) {
+		// TODO Auto-generated method stub
+		super.onCraftMatrixChanged(inventoryIn);
+	}
 
 	public void slotChanged(int slotid, int ctype, int meta, ItemStack eventStack) {
 		if(!this.world.isRemote) {
@@ -267,13 +273,33 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 							//slot.putStack(output);
 							//this.detectAndSendChanges();
 							//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
-							slot.putStack(output.copy());
-							//this.detectAndSendChanges();
-							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+							/*boolean is1countItem = !(output.getItem() instanceof ItemBlock) && (output.getCount() == 1);
+							if(output.getItem() instanceof ItemBlock) {
+								System.out.println("1");
+								//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+								slot.putStack(output.copy());
+								this.detectAndSendChanges();
+								this.internal
+							} else if(is1countItem) {
+								System.out.println("2");
+								slot.putStack(output.copy());
+								this.detectAndSendChanges();
+								//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+							} else {
+								System.out.println("3");
+								slot.putStack(output.copy());
+								//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+								this.detectAndSendChanges();
+							}*/
+							System.out.println("yes");
+							System.out.println("yes");
+							System.out.println("yes");
+							System.out.println("yes");
+							this.customSlots.get(36).putStack(ItemStack.EMPTY);
+							this.customSlots.get(36).putStack(output.copy());
 						} else {
-							slot.putStack(ItemStack.EMPTY);
-							//this.detectAndSendChanges();
-							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, ItemStack.EMPTY));
+							this.customSlots.get(36).putStack(output.copy());
+							this.customSlots.get(36).putStack(ItemStack.EMPTY);
 						}
 					}
 					//this.detectAndSendChanges();

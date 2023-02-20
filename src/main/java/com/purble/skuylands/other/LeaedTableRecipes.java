@@ -35,14 +35,14 @@ public class LeaedTableRecipes {
 				"sl:leaed_charge_matter", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaed_charge_matter",
 				"sl:leaed_charge_matter", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaed_charge_matter",
 				"sl:leaed_charge_matter", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaop_ingot", "sl:leaed_charge_matter",
-				"sl:leaed_charge_matter", "sl:leaed_charge_matter", "sl:leaed_charge_matter", "sl:leaed_charge_matter", "sl:leaed_charge_matter", "sl:leaed_charge_matter" }, new ItemStack(ItemInit.POWERED_LEAOP_SHARD, 3));
+				"sl:leaed_charge_matter", "sl:leaed_charge_matter", "sl:leaed_charge_matter", "sl:leaed_charge_matter", "sl:leaed_charge_matter", "sl:leaed_charge_matter" }, new ItemStack(ItemInit.POWERED_LEAOP_SHARD, 2));
 		addRecipe(2, new String[] { 
 				"mc:air", "mc:air", "sl:powered_leaop_shard", "sl:powered_leaop_shard", "mc:air", "mc:air",
 				"mc:air", "sl:powered_leaop_shard", "mc:air", "sl:powered_leaop_shard", "mc:air", "mc:air",
 				"mc:air", "mc:air", "mc:air", "sl:powered_leaop_shard", "mc:air", "mc:air",
 				"mc:air", "mc:air", "mc:air", "mc:stick", "mc:air", "mc:air",
 				"mc:air", "mc:air", "mc:air", "mc:stick", "mc:air", "mc:air",
-				"mc:air", "mc:air", "mc:air", "mc:stick", "mc:air", "mc:air" }, new ItemStack(ItemInit.POWERED_LEA_STAFF, 2));
+				"mc:air", "mc:air", "mc:air", "mc:stick", "mc:air", "mc:air" }, new ItemStack(ItemInit.POWERED_LEA_STAFF));
 	}
 
 	public Map<Integer, Item> getRecipeInputFromId(int id) {

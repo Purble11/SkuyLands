@@ -46,7 +46,6 @@ public class GuiWindowLeaedTable extends GuiContainer {
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
 		super.mouseClicked(mouseX, mouseY, mouseButton);
-		((GuiLeaedTable)this.inventorySlots).slotChanged(0, 0, 0, null);
 	}
 
 	@Override
