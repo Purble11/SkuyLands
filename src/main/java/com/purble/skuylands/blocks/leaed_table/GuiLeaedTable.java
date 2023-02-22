@@ -1,6 +1,8 @@
 package com.purble.skuylands.blocks.leaed_table;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.base.Supplier;
@@ -12,7 +14,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
@@ -27,6 +31,7 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 	private IInventory internal;
 	public EntityPlayer player;
 	public World world;
+	private ItemStack currOutput = ItemStack.EMPTY;
 	private Map<Integer, Slot> customSlots = new HashMap<>();
 	public GuiLeaedTable(World world, int x, int y, int z, EntityPlayer player) {
 		this.internal = new InventoryBasic("container.leaed_table", true, 37);
@@ -45,17 +50,10 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 			
 			this.customSlots.put(slot, this.addSlotToContainer(new Slot(internal, slot, currentX, currentY) {
 				@Override
-				public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
-					GuiLeaedTable.this.slotChanged(this.getSlotIndex(), 1, 0, stack);
-					
-					return super.onTake(thePlayer, stack);
-				}
-				
-				@Override
 				public void onSlotChanged() {
 					super.onSlotChanged();
 					
-					GuiLeaedTable.this.slotChanged(0, 0, 0, null);
+					GuiLeaedTable.this.slotChanged(this.getSlotIndex(), 0, 0, this.getStack());
 				}
 			}));
 			
@@ -67,7 +65,17 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 		this.customSlots.put(36, this.addSlotToContainer(new Slot(internal, 36, 192, 57) {
 			@Override
 			public ItemStack onTake(EntityPlayer thePlayer, ItemStack stack) {
-				GuiLeaedTable.this.slotChanged(this.getSlotIndex(), 1, 0, stack);
+				if(!GuiLeaedTable.this.world.isRemote) {
+					GuiLeaedTable.this.customSlots.forEach((slotNum, slot) -> {
+						if(slotNum != 36) {
+							ItemStack shrinkedStack = slot.getStack().copy();
+							shrinkedStack.setCount(shrinkedStack.getCount() - 1);
+							slot.putStack(shrinkedStack);
+							GuiLeaedTable.this.detectAndSendChanges();
+							((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(GuiLeaedTable.this.windowId, slotNum, slot.getStack()));
+						}
+					});
+				}
 				
 				return super.onTake(thePlayer, stack);
 			}
@@ -91,7 +99,7 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 	}
 
 	public Map<Integer, Slot> get() {
-		return customSlots;
+		return this.customSlots;
 	}
 
 	@Override
@@ -99,7 +107,7 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 		return internal.isUsableByPlayer(player);
 	}
 	
-	@Override
+	/*@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index) {
 		ItemStack itemstack = ItemStack.EMPTY;
 		Slot slot = (Slot) this.inventorySlots.get(index);
@@ -134,9 +142,9 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 			slot.onTake(playerIn, itemstack1);
 		}
 		return itemstack;
-	}
+	}*/
 
-	@Override
+	/*@Override
 	protected boolean mergeItemStack(ItemStack stack, int startIndex, int endIndex, boolean reverseDirection) {
 		boolean flag = false;
 		int i = startIndex;
@@ -212,7 +220,7 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 			}
 		}
 		return flag;
-	}
+	}*/
 
 	@Override
 	public void onContainerClosed(EntityPlayer playerIn) {
@@ -224,92 +232,82 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 	}
 	
 	@Override
-	public void onCraftMatrixChanged(IInventory inventoryIn) {
-		// TODO Auto-generated method stub
-		super.onCraftMatrixChanged(inventoryIn);
-	}
-
-	public void slotChanged(int slotid, int ctype, int meta, ItemStack eventStack) {
-		if(!this.world.isRemote) {
-			if(slotid == 36) {
-				this.customSlots.forEach((slotNum, slot) -> {
-					if(slotNum != 36) {
-						ItemStack shrinkedStack = slot.getStack().copy();
-						shrinkedStack.setCount(shrinkedStack.getCount() - 1);
-						slot.putStack(shrinkedStack);
-						this.detectAndSendChanges();
-						((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, slot.getStack()));
-					}
-				});
-			}
-			
-			this.customSlots.forEach((slotNum, slot) -> {
-				if(slotNum == 36) {
-					//slot.putStack(getRecipeItem(this.customSlots));
-					LeaedTableRecipes recipes = new LeaedTableRecipes();
-					for (Map.Entry<Map<Integer, Item>, ItemStack> entry : recipes.getRecipes().entrySet()) {
-						Map<Integer, Item> input = entry.getKey();
-					    ItemStack output = entry.getValue();
-						if(this.get().get(0).getStack().getItem() == input.get(0) && this.get().get(1).getStack().getItem() == input.get(1)
-								&& this.get().get(2).getStack().getItem() == input.get(2) && this.get().get(3).getStack().getItem() == input.get(3)
-								&& this.get().get(4).getStack().getItem() == input.get(4) && this.get().get(5).getStack().getItem() == input.get(5)
-								&& this.get().get(6).getStack().getItem() == input.get(6) && this.get().get(7).getStack().getItem() == input.get(7)
-								&& this.get().get(8).getStack().getItem() == input.get(8) && this.get().get(9).getStack().getItem() == input.get(9)
-								&& this.get().get(10).getStack().getItem() == input.get(10) && this.get().get(11).getStack().getItem() == input.get(11)
-								&& this.get().get(12).getStack().getItem() == input.get(12) && this.get().get(13).getStack().getItem() == input.get(13)
-								&& this.get().get(14).getStack().getItem() == input.get(14) && this.get().get(15).getStack().getItem() == input.get(15)
-								&& this.get().get(16).getStack().getItem() == input.get(16) && this.get().get(17).getStack().getItem() == input.get(17)
-								&& this.get().get(18).getStack().getItem() == input.get(18) && this.get().get(19).getStack().getItem() == input.get(19)
-								&& this.get().get(20).getStack().getItem() == input.get(20) && this.get().get(21).getStack().getItem() == input.get(21)
-								&& this.get().get(22).getStack().getItem() == input.get(22) && this.get().get(23).getStack().getItem() == input.get(23)
-								&& this.get().get(24).getStack().getItem() == input.get(24) && this.get().get(25).getStack().getItem() == input.get(25)
-								&& this.get().get(26).getStack().getItem() == input.get(26) && this.get().get(27).getStack().getItem() == input.get(27)
-								&& this.get().get(28).getStack().getItem() == input.get(28) && this.get().get(29).getStack().getItem() == input.get(29)
-								&& this.get().get(30).getStack().getItem() == input.get(30) && this.get().get(31).getStack().getItem() == input.get(31)
-								&& this.get().get(32).getStack().getItem() == input.get(32) && this.get().get(33).getStack().getItem() == input.get(33)
-								&& this.get().get(34).getStack().getItem() == input.get(34) && this.get().get(35).getStack().getItem() == input.get(35)) {
-							//this.get().get(36).putStack(new ItemStack(output));
-							//System.out.println(output);
-							//slot.putStack(output);
-							//this.detectAndSendChanges();
-							//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
-							/*boolean is1countItem = !(output.getItem() instanceof ItemBlock) && (output.getCount() == 1);
-							if(output.getItem() instanceof ItemBlock) {
-								System.out.println("1");
-								//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
-								slot.putStack(output.copy());
-								this.detectAndSendChanges();
-								this.internal
-							} else if(is1countItem) {
-								System.out.println("2");
-								slot.putStack(output.copy());
-								this.detectAndSendChanges();
-								//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
-							} else {
-								System.out.println("3");
-								slot.putStack(output.copy());
-								//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
-								this.detectAndSendChanges();
-							}*/
-							System.out.println("yes");
-							System.out.println("yes");
-							System.out.println("yes");
-							System.out.println("yes");
-							this.customSlots.get(36).putStack(ItemStack.EMPTY);
-							this.customSlots.get(36).putStack(output.copy());
-						} else {
-							this.customSlots.get(36).putStack(output.copy());
-							this.customSlots.get(36).putStack(ItemStack.EMPTY);
-						}
-					}
-					//this.detectAndSendChanges();
-					//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, getRecipeItem(this.customSlots)));
-				}
-			});
-		}
+	public ItemStack slotClick(int slotId, int dragType, ClickType clickTypeIn, EntityPlayer player) {
+		ItemStack hg = super.slotClick(slotId, dragType, clickTypeIn, player);
+		this.inventorySlots.get(36).putStack(ItemStack.EMPTY.copy());
+		System.out.println(this.slotChanged(slotId, 0, 0, null).copy());
+		this.inventorySlots.get(36).putStack(this.slotChanged(slotId, 0, 0, null).copy());
+		return hg;
 	}
 	
-	public ItemStack getRecipeItem(Map<Integer, Slot> customSlots) {
+	@Override
+	public void updateProgressBar(int id, int data) {
+		// TODO Auto-generated method stub
+		super.updateProgressBar(id, data);
+	}
+
+	public ItemStack slotChanged(int slotid, int ctype, int meta, ItemStack eventStack) {
+		LeaedTableRecipes recipes = new LeaedTableRecipes();
+		for (Map.Entry<Map<Integer, Item>, ItemStack> entry : recipes.getRecipes().entrySet()) {
+			Map<Integer, Item> input = entry.getKey();
+		    ItemStack output = entry.getValue();
+			if(this.get().get(0).getStack().getItem() == input.get(0) && this.get().get(1).getStack().getItem() == input.get(1)
+					&& this.get().get(2).getStack().getItem() == input.get(2) && this.get().get(3).getStack().getItem() == input.get(3)
+					&& this.get().get(4).getStack().getItem() == input.get(4) && this.get().get(5).getStack().getItem() == input.get(5)
+					&& this.get().get(6).getStack().getItem() == input.get(6) && this.get().get(7).getStack().getItem() == input.get(7)
+					&& this.get().get(8).getStack().getItem() == input.get(8) && this.get().get(9).getStack().getItem() == input.get(9)
+					&& this.get().get(10).getStack().getItem() == input.get(10) && this.get().get(11).getStack().getItem() == input.get(11)
+					&& this.get().get(12).getStack().getItem() == input.get(12) && this.get().get(13).getStack().getItem() == input.get(13)
+					&& this.get().get(14).getStack().getItem() == input.get(14) && this.get().get(15).getStack().getItem() == input.get(15)
+					&& this.get().get(16).getStack().getItem() == input.get(16) && this.get().get(17).getStack().getItem() == input.get(17)
+					&& this.get().get(18).getStack().getItem() == input.get(18) && this.get().get(19).getStack().getItem() == input.get(19)
+					&& this.get().get(20).getStack().getItem() == input.get(20) && this.get().get(21).getStack().getItem() == input.get(21)
+					&& this.get().get(22).getStack().getItem() == input.get(22) && this.get().get(23).getStack().getItem() == input.get(23)
+					&& this.get().get(24).getStack().getItem() == input.get(24) && this.get().get(25).getStack().getItem() == input.get(25)
+					&& this.get().get(26).getStack().getItem() == input.get(26) && this.get().get(27).getStack().getItem() == input.get(27)
+					&& this.get().get(28).getStack().getItem() == input.get(28) && this.get().get(29).getStack().getItem() == input.get(29)
+					&& this.get().get(30).getStack().getItem() == input.get(30) && this.get().get(31).getStack().getItem() == input.get(31)
+					&& this.get().get(32).getStack().getItem() == input.get(32) && this.get().get(33).getStack().getItem() == input.get(33)
+					&& this.get().get(34).getStack().getItem() == input.get(34) && this.get().get(35).getStack().getItem() == input.get(35)) {
+				//this.get().get(36).putStack(new ItemStack(output));
+				//System.out.println(output);
+				//slot.putStack(output);
+				//this.detectAndSendChanges();
+				//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+				/*boolean is1countItem = !(output.getItem() instanceof ItemBlock) && (output.getCount() == 1);
+				if(output.getItem() instanceof ItemBlock) {
+					System.out.println("1");
+					//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+					slot.putStack(output.copy());
+					this.detectAndSendChanges();
+					this.internal
+				} else if(is1countItem) {
+					System.out.println("2");
+					slot.putStack(output.copy());
+					this.detectAndSendChanges();
+					//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+				} else {
+					System.out.println("3");
+					slot.putStack(output.copy());
+					//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output));
+					this.detectAndSendChanges();
+				}*/
+				System.out.println("yes");
+				System.out.println("yes");
+				System.out.println("yes");
+				System.out.println("yes");
+				return output;//.copy();
+				//this.inventorySlots.get(36).putStack(output.copy());
+				//slot.putStack(output.copy());
+				//this.detectAndSendChanges();
+				//((EntityPlayerMP)player).connection.sendPacket(new SPacketSetSlot(this.windowId, slotNum, output.copy()));
+				//this.putStackInSlot(36, output.copy());
+			}
+		}
+		return ItemStack.EMPTY;
+	}
+	
+	/*public ItemStack getRecipeItem(Map<Integer, Slot> customSlots) {
 		Map<Integer, Item> slots = new HashMap<>();
 		customSlots.forEach((idk, slot) -> {
 			slots.put(slot.getSlotIndex(), slot.getStack().getItem());
@@ -415,6 +413,6 @@ public class GuiLeaedTable extends Container implements Supplier<Map<Integer, Sl
 				&& items.get(30) == firstItem && items.get(31) == firstItem 
 				&& items.get(32) == firstItem && items.get(33) == firstItem 
 				&& items.get(34) == firstItem && items.get(35) == secondItem;
-	}
+	}*/
 	
 }
