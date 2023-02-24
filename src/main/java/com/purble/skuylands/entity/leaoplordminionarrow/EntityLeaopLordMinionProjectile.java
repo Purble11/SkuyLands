@@ -4,6 +4,7 @@ import com.purble.skuylands.SkuyLands;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -25,7 +26,7 @@ public class EntityLeaopLordMinionProjectile extends EntityThrowable {
 	@Override
 	protected void onImpact(RayTraceResult result) {
 		if(!this.world.isRemote) {
-			if(result.entityHit instanceof EntityPlayer)
+			if(result.entityHit instanceof EntityPlayer || result.entityHit instanceof EntityPlayerMP)
 				SkuyLands.killPlayer((EntityPlayer)result.entityHit, this.thrower.getDisplayName().getUnformattedText());
 			else
 				SkuyLands.killEntity((EntityLivingBase)result.entityHit);

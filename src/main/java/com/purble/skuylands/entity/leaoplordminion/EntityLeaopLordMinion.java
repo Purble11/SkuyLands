@@ -1,5 +1,6 @@
 package com.purble.skuylands.entity.leaoplordminion;
 
+import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.entity.leaoplordminionarrow.EntityLeaopLordMinionProjectile;
 import com.purble.skuylands.util.handlers.SoundsHandler;
 
@@ -53,18 +54,32 @@ public class EntityLeaopLordMinion extends EntityMob implements IRangedAttackMob
 		this.tasks.addTask(8, new EntityAILookIdle(this));
 		this.tasks.addTask(2, new EntityAIWander(this, 1.0F));
 		this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true, new Class[] {EntityPigZombie.class}));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
 	}
 
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) {
-		EntityLeaopLordMinionProjectile entityarrow = this.getArrow(distanceFactor);
-		double d0 = target.posX - this.posX;
-		double d1 = target.getEntityBoundingBox().minY + (double)(target.height / 3.0F) - entityarrow.posY;
-		double d2 = target.posZ - this.posZ;
-		double d3 = (double)MathHelper.sqrt(d0 * d0 + d2 * d2);
-		entityarrow.shoot(d0, d1 + d3 * 0.20000000298023224D, d2, 1.6F, 1.0F);
-		this.world.spawnEntity(entityarrow);
+		// Define a threshold distance for switching to melee mode
+		double meleeThreshold = 2.0;
+
+		// Get the distance between your entity and the target
+		double distanceSq = this.getDistanceSq(target);
+
+		// Check if the distance is less than the threshold value
+		if (distanceSq < meleeThreshold * meleeThreshold) {
+			if(target instanceof EntityPlayer)
+				SkuyLands.killPlayer((EntityPlayer)target, this.getDisplayName().getUnformattedText());
+			else
+				SkuyLands.killEntity((EntityLivingBase)target);
+		} else {
+			EntityLeaopLordMinionProjectile entityarrow = this.getArrow(distanceFactor);
+			double d0 = target.posX - this.posX;
+			double d1 = target.getEntityBoundingBox().minY + (double)(target.height / 3.0F) - entityarrow.posY;
+			double d2 = target.posZ - this.posZ;
+			double d3 = (double)MathHelper.sqrt(d0 * d0 + d2 * d2);
+			entityarrow.shoot(d0, d1 + d3 * 0.20000000298023224D, d2, 1.6F, 1.0F);
+			this.world.spawnEntity(entityarrow);
+		}
 	}
 	
 	protected EntityLeaopLordMinionProjectile getArrow(float p_190726_1_)
@@ -86,7 +101,7 @@ public class EntityLeaopLordMinion extends EntityMob implements IRangedAttackMob
 	private void setCombatTask() {
 		if (this.world != null && !this.world.isRemote) {
 			this.tasks.removeTask(this.aiArrowAttack);
-			this.tasks.addTask(4, this.aiArrowAttack);
+			this.tasks.addTask(1, this.aiArrowAttack);
 		}
 	}
 	

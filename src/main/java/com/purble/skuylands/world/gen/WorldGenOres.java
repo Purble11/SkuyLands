@@ -23,7 +23,7 @@ public class WorldGenOres implements IWorldGenerator {
 	}
 
 	private void generateOverworld(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
-		generateOre(BlockInit.LEAOP_ORE.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 5, 7, random.nextInt(3) + 1, 45);
+		generateOre(BlockInit.LEAOP_ORE.getDefaultState(), world, random, chunkX * 16, chunkZ * 16, 5, 7, random.nextInt(5) + 1, 50);
 	}
 
 	private void generateOre(IBlockState ore, World world, Random random, int x, int z, int minY, int maxY, int size, double chances) {

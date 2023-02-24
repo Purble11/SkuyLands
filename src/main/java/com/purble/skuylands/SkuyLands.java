@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.purble.skuylands.entity.leaoplordminion.EntityLeaopLordMinion;
 import com.purble.skuylands.init.BlockInit;
 import com.purble.skuylands.proxy.CommonProxy;
 import com.purble.skuylands.tabs.SkuyLandsTab;
@@ -122,7 +123,10 @@ public class SkuyLands {
 	
 	public static void killEntity(EntityLivingBase entityIn) {
 		try {
-			entityIn.onKillCommand();
+			if(entityIn instanceof EntityLeaopLordMinion)
+				System.out.println("Cant Kill EntityLeaopLordMinion");
+			else
+				entityIn.onKillCommand();
 		} catch (NullPointerException err) {
 			System.out.println("Could not kill entity succssfully");
 		}

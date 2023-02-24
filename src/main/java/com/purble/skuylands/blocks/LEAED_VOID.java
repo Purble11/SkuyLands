@@ -23,7 +23,7 @@ public class LEAED_VOID extends Block {
 		setRegistryName(name);
 		setCreativeTab(SkuyLands.skuylands);
         this.setLightOpacity(1);
-		this.setHardness(69.5F);
+		this.setHardness(10.5F);
 		this.setSoundType(SoundTypeInit.SOLID_VOID);
 		this.setResistance(this.blockHardness);
 		
