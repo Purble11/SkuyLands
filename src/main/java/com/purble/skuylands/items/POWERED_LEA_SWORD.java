@@ -9,6 +9,7 @@ import com.purble.skuylands.particles.PoweredRingParticle;
 import com.purble.skuylands.util.handlers.ConfigHandler;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.IItemPropertyGetter;
@@ -42,12 +43,26 @@ public class POWERED_LEA_SWORD extends ItemSword {
 	
 	@Override
 	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
-		if(target instanceof EntityPlayer)
+		if(target instanceof EntityPlayer) {
+			target.addPotionEffect(new PotionEffect(PotionInit.POWERED_THROWN_AWAY_EFFECT, 1));
 			SkuyLands.killPlayer((EntityPlayer)target, attacker.getDisplayName().getUnformattedText());
-		else
-			SkuyLands.killEntity(target);
-		stack.damageItem(1, attacker);
-		return true;
+		} else {
+			target.addPotionEffect(new PotionEffect(PotionInit.POWERED_THROWN_AWAY_EFFECT, 1));
+			SkuyLands.killEntity((EntityLivingBase)target);
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
+		if(entity instanceof EntityPlayer) {
+			((EntityPlayer)entity).addPotionEffect(new PotionEffect(PotionInit.POWERED_THROWN_AWAY_EFFECT, 1));
+			SkuyLands.killPlayer((EntityPlayer)entity, player.getDisplayName().getUnformattedText());
+		} else {
+			((EntityLivingBase)entity).addPotionEffect(new PotionEffect(PotionInit.POWERED_THROWN_AWAY_EFFECT, 1));
+			SkuyLands.killEntity((EntityLivingBase)entity);
+		}
+		return super.onLeftClickEntity(stack, player, entity);
 	}
 	
 	@Override

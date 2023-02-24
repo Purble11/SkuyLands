@@ -4,9 +4,12 @@ import javax.annotation.Nullable;
 
 import com.purble.skuylands.SkuyLands;
 import com.purble.skuylands.init.ItemInit;
+import com.purble.skuylands.init.PotionInit;
 import com.purble.skuylands.items.LEAOP_ARROW;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -17,6 +20,9 @@ import net.minecraft.item.EnumAction;
 import net.minecraft.item.IItemPropertyGetter;
 import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemTool;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
@@ -27,13 +33,16 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class POWERED_LEA_DUEL_SWORD extends ItemBow {
+public class POWERED_LEA_DUEL_SWORD extends ItemTool {
 
-	public POWERED_LEA_DUEL_SWORD(String name) {
+	public POWERED_LEA_DUEL_SWORD(String name, ToolMaterial material) {
+		super(material, null);
+		
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		setCreativeTab(SkuyLands.skuylands);
 		setMaxDamage(6000);
+		
 		setMaxStackSize(1);
 		
 		
@@ -60,7 +69,6 @@ public class POWERED_LEA_DUEL_SWORD extends ItemBow {
 		this.addPropertyOverride(new ResourceLocation("throw"), new IItemPropertyGetter() {
 			@SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
-				System.out.println(stack.getOrCreateSubCompound("SLTags").getInteger("Throw"));
                 return stack.getOrCreateSubCompound("SLTags").getInteger("Throw");
             }
         });
@@ -73,7 +81,7 @@ public class POWERED_LEA_DUEL_SWORD extends ItemBow {
 		if (entityLiving instanceof EntityPlayer)
         {
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;
-            ItemStack itemstack = this.findAmmo(entityplayer);
+            ItemStack itemstack = ItemStack.EMPTY;
 
             int i = this.getMaxItemUseDuration(stack) - timeLeft;
             i = net.minecraftforge.event.ForgeEventFactory.onArrowLoose(stack, worldIn, entityplayer, i, true);
@@ -155,6 +163,38 @@ public class POWERED_LEA_DUEL_SWORD extends ItemBow {
         }
 	}
 	
+	private EntityArrow customizeArrow(EntityArrow entityarrow) {
+		return entityarrow;
+	}
+	
+	@Override
+	public boolean hitEntity(ItemStack stack, EntityLivingBase target, EntityLivingBase attacker) {
+		if(stack.getSubCompound("SLTags").getFloat("Throw") != 2.0f) {
+			if(target instanceof EntityPlayer) {
+				target.addPotionEffect(new PotionEffect(PotionInit.POWERED_THROWN_AWAY_EFFECT, 1));
+				SkuyLands.killPlayer((EntityPlayer)target, attacker.getDisplayName().getUnformattedText());
+			} else {
+				target.addPotionEffect(new PotionEffect(PotionInit.POWERED_THROWN_AWAY_EFFECT, 1));
+				SkuyLands.killEntity((EntityLivingBase)target);
+			}
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
+		if(stack.getSubCompound("SLTags").getFloat("Throw") != 2.0f) {
+			if(entity instanceof EntityPlayer) {
+				((EntityPlayer)entity).addPotionEffect(new PotionEffect(PotionInit.POWERED_THROWN_AWAY_EFFECT, 1));
+				SkuyLands.killPlayer((EntityPlayer)entity, player.getDisplayName().getUnformattedText());
+			} else {
+				((EntityLivingBase)entity).addPotionEffect(new PotionEffect(PotionInit.POWERED_THROWN_AWAY_EFFECT, 1));
+				SkuyLands.killEntity((EntityLivingBase)entity);
+			}
+		}
+		return super.onLeftClickEntity(stack, player, entity);
+	}
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
@@ -175,11 +215,34 @@ public class POWERED_LEA_DUEL_SWORD extends ItemBow {
     }
 	
 	@Override
+	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack) {
+		
+		return super.onEntitySwing(entityLiving, stack);
+	}
+	
+	@Override
 	public void setDamage(ItemStack stack, int damage) {
 		super.setDamage(stack, damage);
 	}
 	
+	public static float getArrowVelocity(int charge)
+    {
+        float f = (float)charge / 20.0F;
+        f = (f * f + f * 2.0F) / 3.0F;
+
+        if (f > 1.0F)
+        {
+            f = 1.0F;
+        }
+
+        return f;
+    }
+
 	@Override
+    public int getMaxItemUseDuration(ItemStack stack) {
+        return 72000;
+    }
+	
 	protected boolean isArrow(ItemStack stack) {
 		return true;
 	}

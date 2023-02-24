@@ -1,6 +1,7 @@
 package com.purble.skuylands.world.gen;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 import com.purble.skuylands.init.BlockInit;
@@ -16,7 +17,6 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import scala.actors.threadpool.Arrays;
 
 public class WorldGenCustomStructuresSKLH implements IWorldGenerator {
 
@@ -36,7 +36,6 @@ public class WorldGenCustomStructuresSKLH implements IWorldGenerator {
 	}
 
 	private void generateStructure(WorldGenerator generator, World world, Random random, int chunkX, int chunkZ, int chance, Block topBlock, Class<?>... classes) {
-		@SuppressWarnings("unchecked")
 		ArrayList<Class<?>> classesList = new ArrayList<Class<?>>(Arrays.asList(classes));
 		
 		int x = (chunkX*16) + random.nextInt(15);

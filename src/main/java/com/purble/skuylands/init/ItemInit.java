@@ -71,7 +71,7 @@ public class ItemInit {
 	public static final Item POWERED_LEA_SWORD = new POWERED_LEA_SWORD("POWERED_LEA_SWORD".toLowerCase(), TOOL_POWERED);
 
 	public static final Item LEAOP_BOW = new LEAOP_BOW("LEAOP_BOW".toLowerCase());
-	public static final Item POWERED_LEA_DUEL_SWORD = new POWERED_LEA_DUEL_SWORD("POWERED_LEA_DUEL_SWORD".toLowerCase());
+	public static final Item POWERED_LEA_DUEL_SWORD = new POWERED_LEA_DUEL_SWORD("POWERED_LEA_DUEL_SWORD".toLowerCase(), TOOL_POWERED);
 	//public static final Item POWERED_LEA_DUEL_SWORD_THROWEN = new POWERED_LEA_DUEL_SWORD_THROWEN("POWERED_LEA_DUEL_SWORD_THROWEN".toLowerCase());
 	//public static final Item POWERED_LEA_DUEL_SWORD_HANDLE = new POWERED_LEA_DUEL_SWORD_HANDLE("POWERED_LEA_DUEL_SWORD_HANDLE".toLowerCase());
 	public static final Item LEAOP_ARROW = new LEAOP_ARROW("LEAOP_ARROW".toLowerCase());

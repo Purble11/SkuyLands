@@ -19,6 +19,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
@@ -120,7 +121,11 @@ public class SkuyLands {
 	}
 	
 	public static void killEntity(EntityLivingBase entityIn) {
-		entityIn.onKillCommand();
+		try {
+			entityIn.onKillCommand();
+		} catch (NullPointerException err) {
+			System.out.println("Could not kill entity succssfully");
+		}
 	} 
 	
 	public static void changeDimToSkuyLandsHome(EntityPlayer player) {
