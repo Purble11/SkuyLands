@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "powered=false": { "model": "skuylands:lea_pressure_plate_up" },
-        "powered=true": { "model": "skuylands:lea_pressure_plate_down" }
-    }
-}

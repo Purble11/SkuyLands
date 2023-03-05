@@ -1,7 +1,0 @@
-{
-	"variants": {
-		"age=0": { "model": "skuylands:leaop_crop_start" },
-		"age=1": { "model": "skuylands:leaop_crop_middle" },
-		"age=2": { "model": "skuylands:leaop_crop_end" }
-	}
-}

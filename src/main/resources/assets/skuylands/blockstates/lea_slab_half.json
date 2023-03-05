@@ -1,6 +1,0 @@
-{
-	"variants": {
-		"half=bottom,variant=default": { "model": "skuylands:lea_slab_bottom" },
-		"half=top,variant=default": { "model": "skuylands:lea_slab_top" }
-	}
-}

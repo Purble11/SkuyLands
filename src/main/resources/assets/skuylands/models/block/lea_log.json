@@ -1,7 +1,0 @@
-{
-	"parent": "block/cube_column",
-	"textures": {
-		"end": "skuylands:blocks/lea_log_top",
-		"side": "skuylands:blocks/lea_log_side"
-	}
-}

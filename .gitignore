@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # eclipse
 bin
 *.launch
@@ -24,23 +23,3 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
-=======
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
-
-# Other files and folders
-.settings/
-
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
-
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
->>>>>>> 518f56bf4b6575f1c17e0892d812df58687a72b8

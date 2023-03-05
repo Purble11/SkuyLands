@@ -1,8 +1,0 @@
-{
-	"variants": {
-		"facing=north": { "model": "skuylands:lea_chest" },
-		"facing=west": { "model": "skuylands:lea_chest", "y":270 },
-		"facing=east": { "model": "skuylands:lea_chest", "y":90 },
-		"facing=south": { "model": "skuylands:lea_chest", "y":180 }
-	}
-}

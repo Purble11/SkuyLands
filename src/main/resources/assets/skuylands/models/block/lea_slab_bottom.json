@@ -1,8 +1,0 @@
-{
-	"parent": "block/half_slab",
-	"textures": {
-		"bottom": "skuylands:blocks/lea_planks",
-		"top": "skuylands:blocks/lea_planks",
-		"side": "skuylands:blocks/lea_planks"
-	}
-}
